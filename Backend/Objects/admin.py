@@ -1,2 +1,2 @@
-class admin:
-    
+class admin(user):
+    pass
