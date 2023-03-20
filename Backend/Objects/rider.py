@@ -1,0 +1,2 @@
+class rider(user):
+    pass

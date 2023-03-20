@@ -1,0 +1,2 @@
+class admin(user):
+    pass
