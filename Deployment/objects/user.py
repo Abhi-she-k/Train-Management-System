@@ -1,9 +1,9 @@
-class user:
-    def __init__(self, firstName, lastName, type, id):
+class user(object):
+    def __init__(self, firstName, lastName, userType, userId):
         self.firstName = firstName
         self.lastName = lastName
-        self.type = type
-        self.id = id
+        self.type = userType
+        self.id = userId
 
     def findRoute(self):
         pass

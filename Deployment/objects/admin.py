@@ -1,8 +1,6 @@
-class admin(user):
-    def __init__(self, firstName, lastName, id, userName, password, email):
-      self.firstName = firstName
-      self.lastName = lastName
-      self.id = id
+class admin():
+    def __init__(self, firstName, lastName, t, userId, userName, password, email):
+      # super().__init__(firstName,lastName, t, userId)
       self.userName = userName
       self.password = password
       self.email = email 
