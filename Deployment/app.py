@@ -1,9 +1,6 @@
-<<<<<<< HEAD:Deployment/app.py
-# move into app.py directory using cd and run app.py (flask run) in the terminal test
-=======
-# move into app.py directory using cd and run app.py (flask run) in the terminal
 
->>>>>>> c4368f4f6d94479b5128118f8d82f8fc515c7692:Backend/Deployment/app.py
+# move into app.py directory using cd and run app.py (flask run) in the terminal test
+
 from flask import Flask, render_template
 from objects import admin
 # template = os.path.abspath('~/public/Frontend/templates')
