@@ -1,4 +1,4 @@
-# move into app.py directory using cd and run app.py (flask run) in the terminal test
+# move into app.py directory using cd and run app.py (flask run) in the terminal
 
 from flask import Flask, render_template
 import os
