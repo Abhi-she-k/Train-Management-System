@@ -7,5 +7,7 @@ class route():
 
     def removeStation(station):
       self.station.remove(station)
-      
+
+    def __str__(self):
+      return self.stations
     

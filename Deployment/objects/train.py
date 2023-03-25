@@ -6,6 +6,9 @@ class train():
 
     def updateRoute(newRoute):
       self.route = newRoute
+
+    def __str__(self):
+      return self.name + ": " +self.route 
       
       
   

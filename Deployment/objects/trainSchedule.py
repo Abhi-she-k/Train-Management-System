@@ -19,3 +19,5 @@ class trainSchedule():
 
       return self.trains
       
+    def __str__(self):
+      return self.trains
