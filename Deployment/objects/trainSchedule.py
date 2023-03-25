@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+
 class trainSchedule():
     def __init__(self, scheduleId) -> None:
         self.scheduleId = scheduleId
@@ -24,15 +26,15 @@ class trainSchedule():
       checkStations = checkTrain.stations
       for train in self.trains:
         stations = train.stations
-        for j in checkStations:
-          if(j in stations):
-            checkTT = datetime.strptime(checkTrain.schedule[j], '%H:%M')
-            originalTT = datetime.strptime(checkTrain.schedule[j], '%H:%M')
+        for station in stations:
+          if(station in checkStations):
+            checkTT = datetime.strptime(checkTrain.schedule[station], '%H:%M')
+            originalTT = datetime.strptime(train.schedule[station], '%H:%M')
             diff = abs(checkTT - originalTT)
             if(diff < timedelta(minutes=5)):
+              print("Cannot Add Train")
               return False
-            else:
-              return True
+      return True
     
     def print(self):
       for trains in self.trains:

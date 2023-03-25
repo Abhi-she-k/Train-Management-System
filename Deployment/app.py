@@ -21,7 +21,7 @@ def req_login():
     else:
       return render_template('login.html',info='Invalid Info')
     
-@app.route('/sign_up', methods=['POST','GET'])
+@app.route('/form_sign_up', methods=['POST','GET'])
 def sign_up():
     userName = request.form['username']
     password = request.form['password']

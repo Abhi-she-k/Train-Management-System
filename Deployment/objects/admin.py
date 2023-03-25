@@ -6,7 +6,7 @@ class admin(user):
         super().__init__(firstName, lastName, userType, userId)
         self.trainSystems = {}
       
-    def register(self):
+    def register(self, userName, password):
       pass
 
     def login(self, userName, password):
@@ -40,15 +40,9 @@ class admin(user):
 
     def addToSchedule(self, scheduleID, train):
       trainSchedule =  self.trainSystems[scheduleID]
-      if(checkConflicts(scheduleID)):
+      if(trainSchedule.checkConficts(train) == True):        
         trainSchedule.addTrains(train)
-        return trainSchedule
-      else:
-        return False
-
-    def checkConflicts(scheduleID):
-      trainSchedule =  self.trainSystems[scheduleID]
-      trainSchedule.checkConficts(checkTrain)
+        print("Train Added")
       
       
       

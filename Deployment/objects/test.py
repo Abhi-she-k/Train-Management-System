@@ -27,11 +27,19 @@ for i in range(len(stations1)):
 train1 = train("line1Train", route1, [2,3,4,2,2,1,2,6], "5:00")
 train2 = train("line2Train", route2, [8,5,3,2,1,1,1,3], "1:30")
 train3 = train("line3Train", route3, [1,10,2,3,1,9,9,7], "6:45")
+train4 = train("line4Train", route3, [1,10,2,3,1,9,9,7], "2:45")
+train5 = train("line5Train", route3, [1,10,2,3,1,9,9,7], "6:45")
 
 TTCAdmin.createSchedule("Toronto Train Line")
 TTCAdmin.addToSchedule("Toronto Train Line",train1)
+TTCAdmin.trainSystems["Toronto Train Line"].print()
 TTCAdmin.addToSchedule("Toronto Train Line",train2)
+TTCAdmin.trainSystems["Toronto Train Line"].print()
 TTCAdmin.addToSchedule("Toronto Train Line",train3)
+TTCAdmin.trainSystems["Toronto Train Line"].print()
+TTCAdmin.addToSchedule("Toronto Train Line",train4)
+TTCAdmin.trainSystems["Toronto Train Line"].print()
+TTCAdmin.addToSchedule("Toronto Train Line",train5)
 TTCAdmin.trainSystems["Toronto Train Line"].print()
 
 
