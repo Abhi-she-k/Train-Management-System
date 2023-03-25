@@ -32,6 +32,18 @@ class train():
         self.schedule[stations[i+1]] = endTimeStr
         departTime = endTimeStr
 
+    def calculateTrip(self, startStation, endStation):
+      startTime = self.schedule[startStation]
+      endTime = self.schedule[endStation]
+
+      start = datetime.strptime(startTime, '%H:%M')
+      end = datetime.strptime(endTime, '%H:%M')
+      diff = end - start
+      diffMinutes = diff.total_seconds() / 60
+
+      return diffMinutes
+      
+  
     def print(self):
       for key, value in self.schedule.items():
         print(key, " : ", value)

@@ -16,6 +16,9 @@ class trainSchedule():
         if(self.trains[i] == oldTrain):
           self.trains[i] = newTrain
       return self.trains
+
+    def calculateTrip(self, train, start, end):
+        return train.calculateTrip(start, end)
     
     def print(self):
       for trains in self.trains:
