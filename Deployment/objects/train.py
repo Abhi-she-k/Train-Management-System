@@ -4,11 +4,11 @@ class train():
       self.name = name
       self.route = route
 
-    def updateRoute(newRoute):
+    def updateRoute(self, newRoute):
       self.route = newRoute
 
-    def __str__(self):
-      return self.name + ": " +self.route 
+    def print(self):
+      self.route.print()
       
       
   
