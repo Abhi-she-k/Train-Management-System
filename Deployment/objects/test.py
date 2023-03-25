@@ -21,9 +21,9 @@ for i in range(len(stations1)):
     route2.addStation(stat2)
     route3.addStation(stat3)
 
-train1 = train(1, "line1Train", route1, [2,3,4,2,2,1,2,6])
-train2 = train(2, "line2Train", route2, [2,3,4,2,2,1,2,6])
-train3 = train(3, "line3Train", route3, [2,3,4,2,2,1,2,6])
+train1 = train(1, "line1Train", route1, [2,3,4,2,2,1,2,6], "5:00")
+train2 = train(2, "line2Train", route2, [2,3,4,2,2,1,2,6], "6:00")
+train3 = train(3, "line3Train", route3, [2,3,4,2,2,1,2,6], "7:00")
 
 mySchedule = trainSchedule(1)
 mySchedule.addTrains(train1)
