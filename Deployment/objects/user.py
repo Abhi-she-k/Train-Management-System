@@ -4,9 +4,3 @@ class user():
         self.lastName = lastName
         self.type = userType
         self.id = userId
-
-    def findRoute(self):
-        pass
-
-    def viewTimes(self):
-        pass

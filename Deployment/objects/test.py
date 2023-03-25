@@ -1,9 +1,10 @@
 from route import *
 from station import *
-from train import *
+from user import *
+from admin import *
+from trainSchedule import *
 from train import *
 from user import *
-from trainSchedule import *
 
 TTCAdmin = admin("Lebron", "James", "Admin", 3243323)
 
@@ -28,12 +29,12 @@ train2 = train("line2Train", route2, [8,5,3,2,1,1,1,3], "1:30")
 train3 = train("line3Train", route3, [1,10,2,3,1,9,9,7], "6:45")
 
 TTCAdmin.createSchedule("Toronto Train Line")
-TTCAdmin.addToSchedule(train1)
-TTCAdmin.addToSchedule(train2)
-TTCAdmin.addToSchedule(train3)
+TTCAdmin.addToSchedule("Toronto Train Line",train1)
+TTCAdmin.addToSchedule("Toronto Train Line",train2)
+TTCAdmin.addToSchedule("Toronto Train Line",train3)
 TTCAdmin.trainSystems["Toronto Train Line"].print()
 
-print(mySchedule.calculateTrip(train1, "Kipling", "Old Mill"))
+
 
 
 
