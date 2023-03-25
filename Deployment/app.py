@@ -8,11 +8,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def home_page():
-    return render_template('index.html')
+    return render_template('home.html')
 
 @app.route('/login')
 def register():
-    return render_template('adminLogin.html')
+    return render_template('login.html')
     
 
   

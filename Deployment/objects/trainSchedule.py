@@ -19,6 +19,8 @@ class trainSchedule():
 
     def calculateTrip(self, train, start, end):
         return train.calculateTrip(start, end)
+
+    def checkConficts
     
     def print(self):
       for trains in self.trains:

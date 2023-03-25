@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+#main.title {
+  background-color: black;
+}
+
+#home-title {
+  color: black;
+  text-align: center;
+  vertical-align: middle;
+  padding: 100px;
+}
+
+body {
+  background-color: #CDD6DC;
+  margin: 0;
+  padding: 0;
+}
+
+.inner_main_menu {
+  margin: 0 auto;
+  width: 1170px;
+}
+
+.inner_main_menu ul {
+  margin: 0;
+  padding: 60px 20px 40px 80px;
+  list-style: none;
+  text-align: right;
+}
+
+.inner_main_menu ul li {
+  float: none;
+  display: inline-block;
+  position: relative;
+
+}
+
+.inner_main_menu ul li:nth-child(1),
+.inner_main_menu ul li:nth-child(2),
+.inner_main_menu ul li:nth-child(3) {
+  float: left;
+  background-color: none;
+  padding-right: 38px;
+  padding-top: 10px;
+}
+
+.inner_main_menu ul li:nth-child(3) {
+  padding-right: 0px;
+
+}
+.inner_main_menu ul li:nth-child(4),
+.inner_main_menu ul li:nth-child(5),
+.inner_main_menu ul li:nth-child(6) {
+  background-color: none;
+  padding-left: 30px;
+  padding-right: 20px;
+  padding-top: 10px;
+
+}
+
+.inner_main_menu ul li a {
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: block;
+  padding: 10px 20px;
+}
+
+.inner_main_menu ul li a:hover {
+  color: #13818D;
+}
+
+.inner_main_menu ul li ul {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: -9999999px;
+  width: 130px;
+  padding: 0px;
+  background: black;
+  z-index: 5;
+}
+
+.inner_main_menu ul li:hover ul {
+  display: inline-block;
+  left: 0px;
+  text-align: center;
+  color: #13818D;
+}
+
+.inner_main_menu ul li ul li a {
+  color: white;
+  text-transform: capitalize;
+  font-size: 15px;
+  background-color: black;
+  margin-right: 0;
+  margin-top: 0;
+}
+
+.inner_main_menu ul li:hover a {
+  color: #13818D;
+}
+
+.inner_main_menu ul li:hover ul li a {
+  color: white;
+}
+
+.inner_main_menu ul li ul li a:hover {
+  color: #13818D;
+}
+
+.logo_area {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  content: "";
+  margin-left: -150px;
+  text-align: center;
+}
+
+#homepage-logo {
+  width: 150px;
+  height: 150px;
+  background-color: black;
+  border-radius: 50%;
+  overflow: hidden;
+  transform-origin: center;
+  transition: transform 0s ease-in-out;
+
+}
+
+#homepage-logo:hover {
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  transition: transform 0.8s ease-in-out;
+
+  
+}
+
+/* #main_menu {
+  background-color: #6FDA44;
+}
+
+#test{
+  background-color: orange;
+} */
+
+#block{
+  position: fixed;
+  z-index: -1;
+  background-color: black;
+  height: 50px;
+  width: 70%;
+
+  text-align: center;
+  margin-top: 60px;
+  margin-left: 15%;
+  
+}
+
+#backdrop{
+  position: fixed;
+  z-index: -2;
+  background-color: white;
+  height: 100%;
+  width: 70%;
+  text-align: center;
+  margin-left: 15%;
+
+}
+
+#main_menu {
+  position: relative;
+  margin-left: 10%;
+  margin-right: 10%;
+  height: 500px;
+  text-align: center;
+}
+
+#nav-back{
+  height: 100px;
+
+}
+
+#welcome{
+  position: fixed;
+  margin-left: 17%;
+  z-index: 2;
+  margin-top: 10%;
+  color: black;
+  background-color:black;
+  
+
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, .15);
+  
+  backdrop-filter: blur(5px);
+}
+
+#welcome h1 {
+  margin-top: 5px
+}
+
+#train{
+  position: fixed;
+  z-index: -2;
+  margin-left: 15%;
+  margin-top: 7%;
+}
+#train img{
+  width: 1075px;
+  height: 530px;
+}
+
+#footer{
+  position: fixed;
+  background-color: black;
+  color: white;
+  margin-left: 15%;
+  margin-top: 41%;
+  height: 99px;
+  width: 1075px;
+}
+
+/* DEMO-SPECIFIC STYLES */
+#welcome h1 {
+  color: #fff;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  /*border-right: .15em solid orange;*/ /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  animation: 
+    typing 3.5s steps(30, end),
+    blink-caret .5s step-end infinite;
+}
+
+/* The typing effect */
+/* @keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+} */
+
+/* The typewriter cursor effect */
+/* @keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange }
+} */
+
+#login{
+  position: fixed;
+  z-index: 2;
+  color: black;
+  margin-left: 82%;
+}
+
+#login a{
+  text-decoration: underline;
+
+}

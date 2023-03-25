@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <title>Track Master | Login</title>
+  <link rel="shortcut icon" href="/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="/images/favicon.ico" />
+  <link href="login-styles.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div class="form-container">
+    <div id="old-info">
+      <h1 id="form-title">Enter Your Information</h1>
+
+      <form name="user-info" id="form-box">
+        <div class="info-box" id="info1">
+          <label for="user-info">Username:</label><br>
+          <input id="name" type="text" name="user-name" placeholder="John Doe"><br>
+        </div>
+
+        <div class="info-box" id="info2">
+          <label for="user-info">Password:</label><br>
+          <input id="address" type="text" name="user-address" placeholder="123 Street"><br>
+        </div>
+
+      </form>
+
+      <button id="submit-button" onclick="return validateForm();">Submit</button>
+    </div>
+
+</body>
+
+</html>
