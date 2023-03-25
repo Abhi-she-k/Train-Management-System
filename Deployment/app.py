@@ -10,11 +10,23 @@ app = Flask(__name__)
 def home_page():
     return render_template('home.html')
 
-@app.route('/login')
-def register():
-    return render_template('login.html')
+@app.route('/form_req_login', methods=['POST','GET'])
+def req_login():
+    userName = request.form['username']
+    password = request.form['password']
     
+    success = login(userName, password)
+    if success:
+      return render_template('admin-home.html')
+    else:
+      return render_template('login.html',info='Invalid Info')
+    
+@app.route('/sign_up', methods=['POST','GET'])
+def sign_up():
+    userName = request.form['username']
+    password = request.form['password']
 
+    
   
 
 

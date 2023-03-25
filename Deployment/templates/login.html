@@ -14,24 +14,23 @@
 
 <body>
   <div class="form-container">
-    <div id="old-info">
-      <h1 id="form-title">Enter Your Information</h1>
+    <h1 id="form-title">Enter Your Information</h1>
 
-      <form name="user-info" id="form-box">
-        <div class="info-box" id="info1">
-          <label for="user-info">Username:</label><br>
-          <input id="name" type="text" name="user-name" placeholder="John Doe"><br>
-        </div>
+    <form name="user-info" id="form-box" action="/form_login" method="post">
+      <div class="info-box" id="info1">
+        <label for="user-info">Username:</label><br>
+        <input id="name" type="text" name="user-name" placeholder="John Doe"><br>
+      </div>
 
-        <div class="info-box" id="info2">
-          <label for="user-info">Password:</label><br>
-          <input id="address" type="text" name="user-address" placeholder="123 Street"><br>
-        </div>
+      <div class="info-box" id="info2">
+        <label for="user-info">Password:</label><br>
+        <input id="address" type="text" name="user-address" placeholder="123 Street"><br>
+      </div>
 
-      </form>
+      <input id="login-button" type="submit" value="Login">
+    </form>
 
-      <button id="submit-button" onclick="return validateForm();">Submit</button>
-    </div>
+    <h1 id="info">{{info}}</h1>
 
 </body>
 

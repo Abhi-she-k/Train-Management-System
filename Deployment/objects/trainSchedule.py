@@ -20,7 +20,19 @@ class trainSchedule():
     def calculateTrip(self, train, start, end):
         return train.calculateTrip(start, end)
 
-    def checkConficts
+    def checkConficts(self, checkTrain):
+      checkStations = checkTrain.stations
+      for train in self.trains:
+        stations = train.stations
+        for j in checkStations:
+          if(j in stations):
+            checkTT = datetime.strptime(checkTrain.schedule[j], '%H:%M')
+            originalTT = datetime.strptime(checkTrain.schedule[j], '%H:%M')
+            diff = abs(checkTT - originalTT)
+            if(diff < timedelta(minutes=5)):
+              return False
+            else:
+              return True
     
     def print(self):
       for trains in self.trains:

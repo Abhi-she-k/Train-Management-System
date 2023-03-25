@@ -39,3 +39,11 @@ body {
     margin-left: 20px;
     margin-bottom: 10px;
   }
+
+  #login-button {
+    margin-left: 20px; 
+  }
+
+  #info{
+    text-align: center;
+  }

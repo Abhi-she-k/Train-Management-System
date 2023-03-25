@@ -11,11 +11,11 @@ class admin(user):
 
     def login(self, userName, password):
       data = None
-      with open("../adminInfo.json") as f: 
+      with open("../../adminInfo.json") as f: 
         data = json.load(f)
       #check if username exists and password matches given username's password
       for admin in data["admins"]:
-        if userName == admin["name"] && password == admin["password"]:
+        if userName == admin["username"] and password == admin["password"]:
           return True
       return False 
 
@@ -31,7 +31,7 @@ class admin(user):
     def changeUsername(self, newUser):
       self.userName = newUser
 
-    def changePassword(self, newPassword):
+    def changePassword(self, userName, newPassword):
       self.password = newPassword
 
     def createSchedule(self, scheduleID):
@@ -39,13 +39,16 @@ class admin(user):
       self.trainSystems[scheduleID] = newSchedule
 
     def addToSchedule(self, scheduleID, train):
-      
       trainSchedule =  self.trainSystems[scheduleID]
-      trainSchedule.addTrains(train)
+      if(checkConflicts(scheduleID)):
+        trainSchedule.addTrains(train)
+        return trainSchedule
+      else:
+        return False
 
     def checkConflicts(scheduleID):
       trainSchedule =  self.trainSystems[scheduleID]
-      trainSchedule.checkConficts
+      trainSchedule.checkConficts(checkTrain)
       
       
       
