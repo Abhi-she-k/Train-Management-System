@@ -8,16 +8,17 @@ class trainSchedule():
 
     def addTrains(self, train):
       
-      newTrain = { "id": train.name,
-                   "route": train.stations,
-                 }
-      with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.py', "w") as f:
-        write = f.write()
-        data = json.loads(write)
-        for system in data["systems"]:
-            if system["id"] == self.scheduleId:
-              system["trains"].append(newTrain)
-      json.dumps(data)
+      with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json', 'r') as f:
+          data = json.load(f)
+
+      new_train = {
+        "id": train.name,
+        "route": train.stations,
+        "times": train.times
+      }
+
+      data["systems"][0]["trains"].append(new_train)
+      json.dump(data)
       return self.trains
 
     def remove(self, train):

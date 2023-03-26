@@ -1,25 +1,20 @@
 {
-   "systems":[
-      {
-         "id":"TorontoTrainSystem",
-         "trains":[
-            {
-               "id":"train1",
-               "route":[
-                  "Kipling",
-                  "Islington",
-                  "Royal York",
-                  "Old Mill",
-                  "Jane",
-                  "Runnymede",
-                  "HighPark",
-                  "Keele",
-                  "Dundas West"
-               ],
-               "times":"[2,3,4,2,2,1,2,6]",
-               "schedule" : ""
-            }
-         ]
-      }
-   ]
+	"systems": [{
+		"id": "TorontoTrainSystem",
+		"trains": [{
+			"id": "train1",
+			"route": [
+				"Kipling",
+				"Islington",
+				"Royal York",
+				"Old Mill",
+				"Jane",
+				"Runnymede",
+				"HighPark",
+				"Keele",
+				"Dundas West"
+			],
+			"times": "[2,3,4,2,2,1,2,6]"
+		}]
+	}]
 }
