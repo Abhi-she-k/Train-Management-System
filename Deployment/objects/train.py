@@ -37,7 +37,7 @@ class train():
       endTime = self.schedule[endStation]
 
       start = datetime.strptime(startTime, '%H:%M')
-      end = dat etime.strptime(endTime, '%H:%M')
+      end = datetime.strptime(endTime, '%H:%M')
       diff = end - start
       diffMinutes = diff.total_seconds() / 60
 
@@ -45,7 +45,6 @@ class train():
       
   
     def print(self):
-      print(self.schedule)
       for key, value in self.schedule.items():
         print(key, " : ", value)
       
