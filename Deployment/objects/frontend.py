@@ -14,8 +14,7 @@ def view_train_schedule():
     data = json.load(f)
 
   print(json.dumps(data, indent = 4))
-  
- 
+  pass
 
 
 
