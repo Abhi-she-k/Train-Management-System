@@ -45,6 +45,7 @@ class train():
       
   
     def print(self):
+      print(self.schedule)
       for key, value in self.schedule.items():
         print(key, " : ", value)
       

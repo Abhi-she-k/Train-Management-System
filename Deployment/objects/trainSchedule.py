@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+import json
 
 class trainSchedule():
     def __init__(self, scheduleId) -> None:
@@ -6,11 +7,25 @@ class trainSchedule():
         self.trains = []
 
     def addTrains(self, train):
+      
+      newTrain = { "id": train.name,
+                   "route": train.stations,
+                   "times": train.schedule
+                 }
+      self.trains.remove(train)
+      with open("../../trainSchedule.json") as f:
+        data = json.load(f)
+      for system in data["systems"]:
+          if system["id"] == self.scheduleId:
+            system["trains"].append(new_train)
+      updated_json = json.dumps(data)
       self.trains.append(train)
       return self.trains
 
     def remove(self, train):
-      self.trains.remove(train)
+
+      
+      
       return self.trains
 
     def update(self, oldTrain, newTrain):
