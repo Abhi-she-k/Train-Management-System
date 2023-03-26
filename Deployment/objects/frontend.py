@@ -10,34 +10,32 @@ from user import *
 systemObjects = []
 
 def createObjects():
-
   
-  
-  with open('trainSchedule.json', 'r') as f:
+  with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json', 'r') as f:
     data = json.load(f)
    
-  systems = [] 
 
   for system in data['systems']:
     
     systemId = system['id']
     scheduleObject = trainSchedule(systemId)
     
-    for train in system['trains']:
-        name = train['name']
-        route = train['route']
+    for t in system['trains']:
+        name = t['id']
+        route1 = t['route']
         r = route()
-        for i in range(len(route)):
-          stat = station(i, route[i])
+        for i in range(len(route1)):
+          stat = station(i, route1[i])
           r.addStation(stat)
-        times = train['times']
-        depart = train['depart']
+        times = t['times']
+        print(times)
+        depart = t['depart']
       
-        trainObject = train(name, r,)
+        trainObject = train(name, r, times, depart)
         scheduleObject.trains.append(trainObject)
+        print(scheduleObject)
     
-    system.append(scheduleObject)
-
+    systemObjects.append(scheduleObject)
 
 def print_menu():
   #"Print Options to terminal"
@@ -49,17 +47,18 @@ def print_menu():
 
 def view_train_schedule():
   #Print all Trains in train schedule
-  print("Train Schedule: ")
-  data = None
-  with open("trainSchedule.json") as f:
-      data = json.load(f)
+  # print("Train Schedule: ")
+  # data = None
+  # with open("trainSchedule.json") as f:
+  #     data = json.load(f)
     
-  for train in data['systems'][0]['trains']:
-      str = ', '.join(train['route'])
-      str = " | Train: " + train['id'] + " |" + "\n" + " | Routes: " + str + " |" + "\n" + " | Times: " + train['times'] + " | " 
-      print(str)
+  # for train in data['systems'][0]['trains']:
+  #     str = ', '.join(train['route'])
+  #     str = " | Train: " + train['id'] + " |" + "\n" + " | Routes: " + str + " |" + "\n" + " | Times: " + train['times'] + " | " 
+  #     print(str)
+      for i in systemObjects:
+        i.viewTrainSchedule()
       print(" ------------------------------------------------------")
-
 
 def find_route():
   with open("trainSchedule.json", "r") as f:

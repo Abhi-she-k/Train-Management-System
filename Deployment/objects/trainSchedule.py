@@ -14,7 +14,8 @@ class trainSchedule():
       new_train = {
         "id": train.name,
         "route": train.getStatAsList(),
-        "times": train.getTimesAsList()
+        "times": train.times,
+        "depart" : train.depart
       }
 
       for system in data["systems"]:
@@ -71,7 +72,7 @@ class trainSchedule():
               return False
       return True
 
-    def print(self):
+    def viewTrainSchedule(self):
       for trains in self.trains:
          print(trains.name + ": ")
          trains.print()

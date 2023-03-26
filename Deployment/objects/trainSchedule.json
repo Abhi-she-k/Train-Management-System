@@ -1,21 +1,109 @@
 {
-	"systems": [{
-		"id": "TorontoTrainSystem",
-		"trains": [{
-			"name": "Line 1",
-			"route": [
-				"Kipling",
-				"Islington",
-				"Royal York",
-				"Old Mill",
-				"Jane",
-				"Runnymede",
-				"HighPark",
-				"Keele",
-				"Dundas West"
-			],
-			"times": "[2,3,4,2,2,1,2,6]",
-      "depart": "5:00"
-		}]
-	}]
+    "systems": [
+        {
+            "id": "Toronto Train Line",
+            "trains": [
+                {
+                    "id": "line1Train",
+                    "route": [
+                        "Kipling",
+                        "Islington",
+                        "Royal York",
+                        "Old Mill",
+                        "Jane",
+                        "Runnymede",
+                        "HighPark",
+                        "Keele",
+                        "Dundas West"
+                    ],
+                    "times": [
+                        2,
+                        3,
+                        4,
+                        2,
+                        2,
+                        1,
+                        2,
+                        6
+                    ],
+                    "depart": "5:00"
+                },
+                {
+                    "id": "line2Train",
+                    "route": [
+                        "Christie",
+                        "Bathurst",
+                        "Spadina",
+                        "St. George",
+                        "Bay",
+                        "Bloor-Yonge",
+                        "Sherbourne",
+                        "Castle Frank",
+                        "Broadview"
+                    ],
+                    "times": [
+                        8,
+                        5,
+                        3,
+                        2,
+                        1,
+                        1,
+                        1,
+                        3
+                    ],
+                    "depart": "1:30"
+                },
+                {
+                    "id": "line3Train",
+                    "route": [
+                        "Chester",
+                        "Pape",
+                        "Donlands",
+                        "Greenwood",
+                        "Coxwell",
+                        "Woodbine",
+                        "Main Street",
+                        "Victoria Park",
+                        "Warden"
+                    ],
+                    "times": [
+                        1,
+                        10,
+                        2,
+                        3,
+                        1,
+                        9,
+                        9,
+                        7
+                    ],
+                    "depart": "6:45"
+                },
+                {
+                    "id": "line4Train",
+                    "route": [
+                        "Chester",
+                        "Pape",
+                        "Donlands",
+                        "Greenwood",
+                        "Coxwell",
+                        "Woodbine",
+                        "Main Street",
+                        "Victoria Park",
+                        "Warden"
+                    ],
+                    "times": [
+                        1,
+                        10,
+                        2,
+                        3,
+                        1,
+                        9,
+                        9,
+                        7
+                    ],
+                    "depart": "2:45"
+                }
+            ]
+        }
+    ]
 }
