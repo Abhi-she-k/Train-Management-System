@@ -7,23 +7,40 @@ class trainSchedule():
         self.trains = []
 
     def addTrains(self, train):
-      
-      with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json', 'r') as f:
+
+      if(checkConficts(train) == True):
+        with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json', 'r') as f:
           data = json.load(f)
+  
+        new_train = {
+          "id": train.name,
+          "route": train.getStatAsList(),
+          "times": train.getTimesAsList()
+        }
+  
+        for system in data["systems"]:
+          if system["id"] == self.scheduleID:
+              system["trains"].append(new_train)
+    
+        with open('C:/Users/abhis/Desktop/cps406/Train-Management- System/Deployment/objects/trainSchedule.json', 'w') as f:
+          json.dump(data, f, indent=4)
+          self.trains.append(train)
+      else:
+        return False
 
-      new_train = {
-        "id": train.name,
-        "route": train.stations,
-        "times": train.times
-      }
-
-      data["systems"][0]["trains"].append(new_train)
-      json.dump(data)
-      return self.trains
 
     def remove(self, train):
-      self.trains.remove(train)
-      return self.trains
+      with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json', 'r') as f:
+          data = json.load(f)
+  
+      for system in data["systems"]:
+          if system["id"] == self.scheduleID:
+              for train in system["trains"]:
+                  if train["id"] == train_id:
+                      system["trains"].remove(train)
+  
+      with open('C:/Users/abhis/Desktop/cps406/Train-Management- System/Deployment/objects/trainSchedule.json', 'w') as f:
+          json.dump(data, f, indent=4)
 
     def update(self, oldTrain, newTrain):
       for i in range(len(self.trains)):
@@ -33,7 +50,7 @@ class trainSchedule():
 
     def calculateTrip(self, train, start, end):
         return train.calculateTrip(start, end)
-
+      
     def checkConficts(self, checkTrain):
       checkStations = checkTrain.stations
       for train in self.trains:
@@ -47,7 +64,7 @@ class trainSchedule():
               print("Cannot Add Train")
               return False
       return True
-    
+
     def print(self):
       for trains in self.trains:
          print(trains.name + ": ")

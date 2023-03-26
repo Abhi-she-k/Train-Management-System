@@ -1,13 +1,13 @@
 {
-  "adminKey": "imanadmin",
+  "adminKey": "admin321",
   "admins": [
     {
       "username": "admin1",
-      "password": "ye"
+      "password": "conductor1234"
     },
     {
       "username": "admin2",
-      "password": "ok"
+      "password": "railway456"
     }
   ]
 }

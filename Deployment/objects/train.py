@@ -42,6 +42,16 @@ class train():
       diffMinutes = diff.total_seconds() / 60
 
       return diffMinutes
+
+    def getStatAsList(self):
+      li = [] 
+      for i in self.route.stations:
+          li.append(i.name)
+
+      return li
+
+    def getTimeAsList(self):
+      return self.list(calculateSchedule.values())
       
   
     def print(self):
