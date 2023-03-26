@@ -50,8 +50,8 @@ class train():
 
       return li
 
-    def getTimeAsList(self):
-      return self.list(calculateSchedule.values())
+    def getTimesAsList(self):
+      return list(self.schedule.values())
       
   
     def print(self):

@@ -38,11 +38,16 @@ class admin(user):
       newSchedule = trainSchedule(scheduleID)
       self.trainSystems[scheduleID] = newSchedule
 
-    def addToSchedule(self, scheduleID, train):
+   def addToSchedule(self, scheduleID, train):
       trainSchedule =  self.trainSystems[scheduleID]
-      if(trainSchedule.checkConficts(train) == True):        
+      if(trainSchedule.checkConflicts(train) == True):        
         trainSchedule.addTrains(train)
         print("Train Added")
+
+    def removeFromSchedule(self, scheduleID, train):
+      trainSchedule =  self.trainSystems[scheduleID]       
+      trainSchedule.removeTrain(train)
+      print("Train removed")")
       
       
       

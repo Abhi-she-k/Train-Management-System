@@ -2,7 +2,7 @@
 	"systems": [{
 		"id": "TorontoTrainSystem",
 		"trains": [{
-			"id": "train1",
+			"name": "Line 1",
 			"route": [
 				"Kipling",
 				"Islington",
@@ -14,7 +14,8 @@
 				"Keele",
 				"Dundas West"
 			],
-			"times": "[2,3,4,2,2,1,2,6]"
+			"times": "[2,3,4,2,2,1,2,6]",
+      "depart": "5:00"
 		}]
 	}]
 }

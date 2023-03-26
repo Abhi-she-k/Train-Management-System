@@ -32,14 +32,15 @@ train5 = train("line5Train", route3, [1,10,2,3,1,9,9,7], "6:45")
 
 TTCAdmin.createSchedule("Toronto Train Line")
 TTCAdmin.addToSchedule("Toronto Train Line",train1)
-TTCAdmin.trainSystems["Toronto Train Line"].print()
 TTCAdmin.addToSchedule("Toronto Train Line",train2)
-TTCAdmin.trainSystems["Toronto Train Line"].print()
 TTCAdmin.addToSchedule("Toronto Train Line",train3)
-TTCAdmin.trainSystems["Toronto Train Line"].print()
 TTCAdmin.addToSchedule("Toronto Train Line",train4)
-TTCAdmin.trainSystems["Toronto Train Line"].print()
-TTCAdmin.addToSchedule("Toronto Train Line",train5)
+
+TTCAdmin.removeFromSchedule("Toronto Train Line",train1)
+TTCAdmin.removeFromSchedule("Toronto Train Line",train2)
+TTCAdmin.removeFromSchedule("Toronto Train Line",train3)
+TTCAdmin.removeFromSchedule("Toronto Train Line",train4)
+
 TTCAdmin.trainSystems["Toronto Train Line"].print()
 
 

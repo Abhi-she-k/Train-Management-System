@@ -8,39 +8,45 @@ class trainSchedule():
 
     def addTrains(self, train):
 
-      if(checkConficts(train) == True):
-        with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json', 'r') as f:
-          data = json.load(f)
+      with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json', 'r') as f:
+        data = json.load(f)
+
+      new_train = {
+        "id": train.name,
+        "route": train.getStatAsList(),
+        "times": train.getTimesAsList()
+      }
+
+      for system in data["systems"]:
+        if system["id"] == self.scheduleId:
+          system["trains"].append(new_train)
+          break
   
-        new_train = {
-          "id": train.name,
-          "route": train.getStatAsList(),
-          "times": train.getTimesAsList()
-        }
-  
-        for system in data["systems"]:
-          if system["id"] == self.scheduleID:
-              system["trains"].append(new_train)
-    
-        with open('C:/Users/abhis/Desktop/cps406/Train-Management- System/Deployment/objects/trainSchedule.json', 'w') as f:
-          json.dump(data, f, indent=4)
-          self.trains.append(train)
-      else:
-        return False
+      with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json', 'w') as f:
+        json.dump(data, f, indent=4)
+        self.trains.append(train)
 
 
-    def remove(self, train):
+
+    def removeTrain(self, train):
+      remTrain = {
+        "id": train.name,
+        "route": train.getStatAsList(),
+        "times": train.getTimesAsList()
+      }
+      
       with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json', 'r') as f:
           data = json.load(f)
   
       for system in data["systems"]:
-          if system["id"] == self.scheduleID:
-              for train in system["trains"]:
-                  if train["id"] == train_id:
-                      system["trains"].remove(train)
+          if system["id"] == self.scheduleId:
+              for t in system["trains"]:
+                  if t["id"] == train.name:
+                      system["trains"].remove(remTrain)
   
-      with open('C:/Users/abhis/Desktop/cps406/Train-Management- System/Deployment/objects/trainSchedule.json', 'w') as f:
+      with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json', 'w') as f:
           json.dump(data, f, indent=4)
+          self.trains.remove(train)
 
     def update(self, oldTrain, newTrain):
       for i in range(len(self.trains)):
@@ -51,7 +57,7 @@ class trainSchedule():
     def calculateTrip(self, train, start, end):
         return train.calculateTrip(start, end)
       
-    def checkConficts(self, checkTrain):
+    def checkConflicts(self, checkTrain):
       checkStations = checkTrain.stations
       for train in self.trains:
         stations = train.stations
