@@ -17,14 +17,14 @@
                         "Dundas West"
                     ],
                     "times": [
+                        3,
                         2,
                         3,
-                        4,
                         2,
+                        3,
                         2,
-                        1,
-                        2,
-                        6
+                        3,
+                        3
                     ],
                     "depart": "14:00"
                 },
@@ -42,14 +42,14 @@
                         "Broadview"
                     ],
                     "times": [
-                        8,
-                        5,
+                        4,
+                        2,
+                        2,
                         3,
                         2,
-                        1,
-                        1,
-                        1,
-                        3
+                        3,
+                        3,
+                        4
                     ],
                     "depart": "1:30"
                 },
@@ -67,14 +67,14 @@
                         "Warden"
                     ],
                     "times": [
-                        1,
-                        10,
-                        2,
                         3,
-                        1,
-                        9,
-                        9,
-                        7
+                        3,
+                        2,
+                        4,
+                        3,
+                        4,
+                        2,
+                        4
                     ],
                     "depart": "6:45"
                 },
@@ -92,16 +92,246 @@
                         "Warden"
                     ],
                     "times": [
+                        2,
                         3,
-                        10,
-                        6,
-                        9,
-                        10,
-                        10,
-                        9,
-                        12
+                        2,
+                        3,
+                        3,
+                        4,
+                        2,
+                        4
                     ],
                     "depart": "18:45"
+                },
+                {
+                    "id": "line5Train",
+                    "route": [
+                        "Union",
+                        "St. Andrew",
+                        "Osgoode",
+                        "St. Patrick",
+                        "Queen's Park",
+                        "Museum",
+                        "Wellesley",
+                        "College",
+                        "Dundas"
+                    ],
+                    "times": [
+                        2,
+                        2,
+                        3,
+                        2,
+                        3,
+                        3,
+                        2,
+                        3
+                    ],
+                    "depart": "9:15"
+                },
+                {
+                    "id": "line6Train",
+                    "route": [
+                        "Union",
+                        "King",
+                        "Queen",
+                        "Dundas West",
+                        "Lansdowne",
+                        "Dufferin",
+                        "Ossington",
+                        "Christie",
+                        "St. George"
+                    ],
+                    "times": [
+                        2,
+                        3,
+                        3,
+                        4,
+                        3,
+                        2,
+                        2,
+                        4
+                    ],
+                    "depart": "12:30"
+                },
+                {
+                    "id": "line5Train",
+                    "route": [
+                        "Union",
+                        "King",
+                        "Queen",
+                        "Osgoode",
+                        "St. Andrew",
+                        "Spadina",
+                        "Dupont",
+                        "St. Clair West",
+                        "Eglinton West"
+                    ],
+                    "times": [
+                        3,
+                        2,
+                        3,
+                        2,
+                        3,
+                        5,
+                        3,
+                        4
+                    ],
+                    "depart": "9:15"
+                },
+                {
+                    "id": "line6Train",
+                    "route": [
+                        "Bloor-Yonge",
+                        "Wellesley",
+                        "College",
+                        "Dundas",
+                        "Queen",
+                        "King",
+                        "Dufferin",
+                        "Lansdowne",
+                        "Bloor GO/UP"
+                    ],
+                    "times": [
+                        2,
+                        3,
+                        3,
+                        3,
+                        2,
+                        3,
+                        6,
+                        4
+                    ],
+                    "depart": "12:30"
+                },
+                {
+                    "id": "line7Train",
+                    "route": [
+                        "Finch",
+                        "North York Centre",
+                        "Sheppard-Yonge",
+                        "Lawrence",
+                        "Eglinton",
+                        "St. Clair",
+                        "Summerhill",
+                        "Rosedale",
+                        "Bloor-Yonge"
+                    ],
+                    "times": [
+                        5,
+                        3,
+                        4,
+                        3,
+                        5,
+                        4,
+                        2,
+                        3
+                    ],
+                    "depart": "16:45"
+                },
+                {
+                    "id": "line8Train",
+                    "route": [
+                        "Kipling",
+                        "Royal York",
+                        "Old Mill",
+                        "Jane",
+                        "Runnymede",
+                        "HighPark",
+                        "Keele",
+                        "Dundas West",
+                        "Lansdowne"
+                    ],
+                    "times": [
+                        3,
+                        4,
+                        2,
+                        2,
+                        1,
+                        2,
+                        6,
+                        5
+                    ],
+                    "depart": "7:00"
+                },
+                {
+                    "id": "line9Train",
+                    "route": [
+                        "Union",
+                        "St. Andrew",
+                        "Osgoode",
+                        "Queen",
+                        "Dufferin",
+                        "Lansdowne",
+                        "Keele",
+                        "Dundas West",
+                        "Kipling"
+                    ],
+                    "times": [
+                        2,
+                        2,
+                        2,
+                        4,
+                        6,
+                        4,
+                        4,
+                        6
+                    ],
+                    "depart": "19:30"
+                }
+            ]
+        },
+        {
+            "id": "GO Transit",
+            "trains": [
+                {
+                    "id": "Lakeshore West Train",
+                    "route": [
+                        "Aldershot",
+                        "Burlington",
+                        "Oakville",
+                        "Clarkson",
+                        "Port Credit",
+                        "Long Branch",
+                        "Mimico",
+                        "Etobicoke North",
+                        "Union Station"
+                    ],
+                    "times": [
+                        5,
+                        7,
+                        5,
+                        3,
+                        4,
+                        5,
+                        3,
+                        7
+                    ],
+                    "depart": "7:00"
+                },
+                {
+                    "id": "Kitchener Train",
+                    "route": [
+                        "Kitchener",
+                        "Guelph Central",
+                        "Acton",
+                        "Georgetown",
+                        "Brampton",
+                        "Mount Pleasant",
+                        "Malton",
+                        "Etobicoke North",
+                        "Union Station"
+                    ],
+                    "times": [
+                        60,
+                        15,
+                        12,
+                        10,
+                        25,
+                        6,
+                        6,
+                        10
+                    ],
+                    "depart": "6:30"
                 }
             ]
         }

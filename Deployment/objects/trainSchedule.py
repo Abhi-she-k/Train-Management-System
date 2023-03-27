@@ -77,7 +77,8 @@ class trainSchedule():
       print(" ")
       for trains in self.trains:
         trains.print()
-
+      print(" ")
+      print(" ")
     
     def findRoute(self, startStation, endStation):
       isRoute = False

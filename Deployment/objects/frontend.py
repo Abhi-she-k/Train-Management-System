@@ -32,7 +32,7 @@ def createObjects():
       
         trainObject = train(name, r, times, depart)
         scheduleObject.trains.append(trainObject) 
-  systemObjects.append(scheduleObject)
+    systemObjects.append(scheduleObject)
 
 def print_menu():
   #"Print Options to terminal"
