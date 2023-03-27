@@ -8,7 +8,7 @@ from train import *
 from user import *
 
 systemObjects = []
-curAdmin = admin(None)
+curAdmin = admin(None,None,None,None)
 
 def createObjects():
   with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json', 'r') as f:
