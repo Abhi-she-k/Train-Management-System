@@ -71,17 +71,22 @@ class trainSchedule():
               print("Cannot Add Train")
               return False
       return True
-
+    
     def viewTrainSchedule(self):
       print(self.scheduleId)
+      print(" ")
       for trains in self.trains:
-         trains.print()
+        trains.print()
 
+    
     def findRoute(self, startStation, endStation):
       isRoute = False
+      r = []
       for t in self.trains:
-        if startStation in t.route.stations and endStation in t.route.stations:
-          print(t)
+        station = t.getStatAsList()
+        if (startStation in station) and (endStation in station):
+          t.print()
+          r.append(t)
           isRoute = True
       if isRoute == False:
         print("No routes matching this criteria")

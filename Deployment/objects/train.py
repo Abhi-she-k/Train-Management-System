@@ -54,6 +54,7 @@ class train():
       return list(self.schedule.values())
       
     def print(self):
+      print(" ")
       print(self.name+":")
       print("-" * 50)
 

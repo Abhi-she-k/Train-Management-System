@@ -30,10 +30,8 @@ def createObjects():
         depart = t['depart']
       
         trainObject = train(name, r, times, depart)
-        scheduleObject.trains.append(trainObject)
-        print(scheduleObject)
-    
-    systemObjects.append(scheduleObject)
+        scheduleObject.trains.append(trainObject) 
+  systemObjects.append(scheduleObject)
 
 def print_menu():
   #"Print Options to terminal"
@@ -48,51 +46,56 @@ def view_train_schedule():
   createObjects()
   for i in systemObjects:
     i.viewTrainSchedule()
-  print(" ------------------------------------------------------")
 
 def find_route():
+  startStation = input("Enter a starting station: ")
+  endStation = input("Enter an ending station: ")
+  print(" ")
   for i in systemObjects:
-    startStation = input("Enter a starting station: ")
-    endStation = input("Enter an ending station: ")
-    i.findroute(startStation, endStation) 
+    i.findRoute(startStation.strip(), endStation.strip())
+
+def calculateRoute():
+  startStation = input("Enter a starting station: ")
+  endStation = input("Enter an ending station: ")
+  print(" ")
+  times = []
+  for i in systemObjects:
+    r = i.findRoute(startStation.strip(), endStation.strip())
+
+  for train in r:
+    time = train.calculateTrip(startStation.strip(), endStation.strip())
+    times.append(time)
+
+  sorted(times):
   
-#  with open("trainSchedule.json", "r") as f:
-#    train_schedule = json.load(f)
-#  start = input("Pick a Starting Station: ")
-#  end = input("Pick a Ending Station: ")
-#  #check if start and end are in a existing route
-#  valid_stations = False
-#  for system in train_schedule["systems"]:
-#    for train in system["trains"]:
-#      if start in train["route"] and end in train["route"]:
-#        valid_stations = True
-#        print("Route ID: ", train["id"])
-#        print("Available Times: ", train["times"])
-#        break
-#    if valid_stations:
-#      break
-#  #Start and End Station not in any route
-#  if not valid_stations:
-#    print("No available routes from " + start + " to " + end)
+  for t in times:
+    print(startStation.strip() + " -----> " + endStation.strip() + ": " + t)
 
 def admin_login():
   username = input("Please enter your username: ")
   password = input("Please enter your password: ")
   pass
 
+if __name__ == "__main__":
+  createObjects()
 
-#Main Loop
-while True:
-  print_menu()
-  user_choice = input("Please enter your choice (1-4): ")
-
-  if user_choice == "1":
-    view_train_schedule()
-  if user_choice == "2":
-    find_route()
-  if user_choice == "3":
-    admin_login()
-  if user_choice == "4":
-    print("Thank You for using the Train Admin System. Goodbye!")
-    break
+  while True:
+    print_menu()
+    
+    user_choice = input("Please enter your choice (1-4): ")
+  
+    if user_choice == "1":
+      view_train_schedule()
+    if user_choice == "2":
+      find_route()
+    if user_choice == "3":
+      calculate_route()
+    if user_choice == "4":
+      admin_login()
+    if user_choice == "5":
+      make_a_schedule()
+    if user_choice == "6":
+      print("Thank You for using the Train Admin System. Goodbye!")
+      systemObjects = []
+      break
   
