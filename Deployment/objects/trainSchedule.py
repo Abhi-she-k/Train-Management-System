@@ -74,7 +74,6 @@ class trainSchedule():
     
     def viewTrainSchedule(self):
       print(self.scheduleId)
-      print(" ")
       for trains in self.trains:
         trains.print()
       print(" ")
