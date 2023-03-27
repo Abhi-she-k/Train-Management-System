@@ -80,14 +80,10 @@ class trainSchedule():
       print(" ")
     
     def findRoute(self, startStation, endStation):
-      isRoute = False
       r = []
       for t in self.trains:
         station = t.getStatAsList()
         if (startStation in station) and (endStation in station):
           t.print()
           r.append(t)
-          isRoute = True
-      if isRoute == False:
-        print("No routes matching this criteria")
       return r
