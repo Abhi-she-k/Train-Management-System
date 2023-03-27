@@ -83,58 +83,94 @@ def admin_login():
     print("Wrong username or password")
     return
   loggedIn = True
-  print("Logged in as: {}").format(username)
+  print("Logged in as: " + username)
   while loggedIn:
     print("1. Create Schedule ")
-    print("2. Add to Schedule ")
+    print("2. Create System ")
     print("3. Remove From Schedule ")
     print("4. Logout")
-
     admin_choice = input("Please enter your choice(1-4): ")
+    
     if admin_choice == '1':
       scheduleID = input("Create a schedule ID: ")
       curAdmin.createSchedule(scheduleID)
-      
-    elif admin_choice == '2':
-      scheduleID = input("Enter a schedule ID: ")
-      trainID = input("Enter a train ID: ") 
-      trainExists = False
-      train = None 
-      # Get train object
+      system = input("Enter System Name")
+      sys
       for i in systemObjects:
-        for j in i.trains:
-          if j.name == trainID:
-            train = j 
-            trainExists = True
-      if not trainExists: 
-        print("Error: Train not found")
-        return
-      curAdmin.addToSchedule(scheduleID, train)
+        if(i.scheduleId == system):
+          sys = i
+          addToSchedule(sys)
+      print("System does not exist")
       
-    elif admin_choice == '3':
-      scheduleId = input("Enter a schedule ID: ")
-      trainId = input("Enter a train ID: ")
-      trainExists = False
-      train = None
-      # Get train object
-      for i in systemObjects:
-        for j in i.trains:
-          if j.name == trainID:
-            train = j
-            trainExists = True
-      if not trainExists:
-        print("Error: Train not found")
-        return
-      curAdmin.removeFromSchedule(scheduleId, train)
+      def addToSchedule(system, train):    
+        departureTime = input("Enter the Departure Time (hh:mm)")
+        name = input("Name of Train")
+        while(True):
+          stations = []
+          stat = input("Enter Stations (Press / to exit)")
+          if(stat == "/"):
+            break
+          stations.append(stat)
+        while(True):
+          timeBetween = []
+          print(stations)
+          stat = input("Enter ETA between stations (Press / to exit)")
+          if(stat == "/"):
+            break
+          timeBetween.append(stat)
+          if(len(timeBetween) >= len(stations)):
+            print("Too many times!")
+            break
+          newRoute = route()
+          for stats in stations:
+            newStat = station(1, stats)
+            newRoute.addStation(newStat)
+          
+          newTrain = train(name, newRoute, timeBetween, departureTime)
+          newTrain.print()
+        
+          
       
-    elif admin_choice == '4':
-      print("Loggin out...")
-      curAdmin.logout()
-      loggedIn = False
-      print("Thank You for using the Train Management System. Returning to Main Menu.")
+    # elif admin_choice == '2':
+    #   scheduleID = input("Enter a schedule ID: ")
+    #   trainID = input("Enter a train ID: ") 
+    #   trainExists = False
+    #   train = None 
+    #   # Get train object
+    #   for i in systemObjects:
+    #     for j in i.trains:
+    #       if j.name == trainID:
+    #         train = j 
+    #         trainExists = True
+    #   if not trainExists: 
+    #     print("Error: Train not found")
+    #     return
+    #   curAdmin.addToSchedule(scheduleID, train)
       
-    else: 
-      print("Invalid Input")
+    # elif admin_choice == '3':
+    #   scheduleId = input("Enter a schedule ID: ")
+    #   trainId = input("Enter a train ID: ")
+    #   trainExists = False
+    #   train = None
+    #   # Get train object
+    #   for i in systemObjects:
+    #     for j in i.trains:
+    #       if j.name == trainID:
+    #         train = j
+    #         trainExists = True
+    #   if not trainExists:
+    #     print("Error: Train not found")
+    #     return
+    #   curAdmin.removeFromSchedule(scheduleId, train)
+      
+    # elif admin_choice == '4':
+    #   print("Loggin out...")
+    #   curAdmin.logout()
+    #   loggedIn = False
+    #   print("Thank You for using the Train Management System. Returning to Main Menu.")
+      
+    # else: 
+    #   print("Invalid Input")
     
 if __name__ == "__main__":
   createObjects()
