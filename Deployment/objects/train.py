@@ -43,6 +43,7 @@ class train():
 
       return diffMinutes
 
+
     def getStatAsList(self):
       li = [] 
       for i in self.route.stations:

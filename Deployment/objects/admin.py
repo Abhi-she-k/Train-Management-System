@@ -11,7 +11,7 @@ class admin(user):
 
     def login(self, userName, password):
       data = None
-      with open("adminInfo.json") as f: 
+      with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/adminInfo.json') as f: 
         data = json.load(f)
       #check if username exists and password matches given username's password
       for admin in data["admins"]:
