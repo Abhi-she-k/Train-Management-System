@@ -80,8 +80,8 @@ class trainSchedule():
         station = t.getStatAsList()
 
         if (startStation in station) and (endStation in station):
-          t1 = datetime.strptime(t.schedule[startStation], "%H:%M").time()
-          t2 = datetime.strptime(t.schedule[endStation], "%H:%M").time()
+          t1 = datetime.strptime(t.schedule[startStation], "%H:%M")
+          t2 = datetime.strptime(t.schedule[endStation], "%H:%M")
           if(t1<=t2):
             t.print()
             r.append(t)

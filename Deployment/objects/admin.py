@@ -1,6 +1,7 @@
 from user import *
 from trainSchedule import *
 import json
+
 class admin(user):
     def __init__(self, firstName, lastName, userType, userId):
       self.trainSystems = {}
@@ -20,11 +21,11 @@ class admin(user):
           return True
       return False 
 
-    def authenticate(self):
-      pass
+    # def authenticate(self):
+    #   pass
 
-    def forgotCredentials(self):
-      pass
+    # def forgotCredentials(self):
+    #   pass
 
     def logout(self):
       self.loggedIn = False
