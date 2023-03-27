@@ -27,7 +27,6 @@ def createObjects():
           stat = station(i, route1[i])
           r.addStation(stat)
         times = t['times']
-        print(times)
         depart = t['depart']
       
         trainObject = train(name, r, times, depart)
@@ -47,7 +46,6 @@ def print_menu():
 
 def view_train_schedule():
   #Print all Trains in train schedule
-  createObjects()
   for i in systemObjects:
     i.viewTrainSchedule()
 
@@ -81,7 +79,7 @@ def admin_login():
   username = input("Please enter your username: ")
   password = input("Please enter your password: ")
   valid = curAdmin.login(username,password)
-  if !valid:
+  if not valid:
     print("Wrong username or password")
     return
   loggedIn = True
@@ -108,7 +106,7 @@ def admin_login():
           if j.name == trainID:
             train = j 
             trainExists = True
-      if !trainExists: 
+      if not trainExists: 
         print("Error: Train not found")
         return
       curAdmin.addToSchedule(scheduleID, train)
@@ -124,7 +122,7 @@ def admin_login():
           if j.name == trainID:
             train = j
             trainExists = True
-      if !trainExists:
+      if not trainExists:
         print("Error: Train not found")
         return
       curAdmin.removeFromSchedule(scheduleId, train)
