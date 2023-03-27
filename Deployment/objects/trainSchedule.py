@@ -73,6 +73,7 @@ class trainSchedule():
       return True
     
     def viewTrainSchedule(self):
+      print(" ")
       print(self.scheduleId)
       for trains in self.trains:
         trains.print()

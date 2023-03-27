@@ -61,7 +61,6 @@ class train():
       for key, value in self.schedule.items():
         print(str(key) + " ----- " + value)
       print("-" * 50)
-      print(" ")
       
       
       
