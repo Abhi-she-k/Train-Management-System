@@ -21,7 +21,7 @@ class train():
       self.calculateSchedule(departTime)
       
     def calculateSchedule(self, departTime):
-      start = self.stations[0]
+      start = self.stations[0].name
       self.schedule[start] = departTime
       stations = self.route.stations
       
@@ -29,7 +29,7 @@ class train():
         start = datetime.strptime(departTime, '%H:%M')
         end = start + timedelta(minutes=self.times[i])
         endTimeStr = end.strftime('%H:%M')
-        self.schedule[stations[i+1]] = endTimeStr
+        self.schedule[stations[i+1].name] = endTimeStr
         departTime = endTimeStr
 
     def calculateTrip(self, startStation, endStation):
@@ -59,7 +59,7 @@ class train():
       print("-" * 50)
 
       for key, value in self.schedule.items():
-        print(str(key) + ":" + value)
+        print(str(key) + " ----- " + value)
       print("-" * 50)
       print()
       

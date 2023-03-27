@@ -90,3 +90,4 @@ class trainSchedule():
           isRoute = True
       if isRoute == False:
         print("No routes matching this criteria")
+      return r

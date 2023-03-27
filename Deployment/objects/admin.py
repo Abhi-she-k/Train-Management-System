@@ -3,8 +3,8 @@ from trainSchedule import *
 import json
 class admin(user):
     def __init__(self, firstName, lastName, userType, userId):
-        super().__init__(firstName, lastName, userType, userId)
-        self.trainSystems = {}
+      self.trainSystems = {}
+      self.loggedIn = False
       
     def register(self, userName, password):
       pass
@@ -16,6 +16,7 @@ class admin(user):
       #check if username exists and password matches given username's password
       for admin in data["admins"]:
         if userName == admin["username"] and password == admin["password"]:
+          self.loggedIn = True
           return True
       return False 
 
@@ -26,7 +27,7 @@ class admin(user):
       pass
 
     def logout(self):
-      pass
+      self.loggedIn = False
 
     def changeUsername(self, newUser):
       self.userName = newUser
