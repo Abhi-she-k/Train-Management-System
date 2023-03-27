@@ -73,8 +73,15 @@ class trainSchedule():
       return True
 
     def viewTrainSchedule(self):
+      print(self.scheduleId)
       for trains in self.trains:
-         print(trains.name + ": ")
          trains.print()
-         print(" ")
-      
+
+    def findRoute(self, startStation, endStation):
+      isRoute = False
+      for t in self.trains:
+        if startStation in t.route.stations and endStation in t.route.stations:
+          print(t)
+          isRoute = True
+      if isRoute == False:
+        print("No routes matching this criteria")
