@@ -141,13 +141,13 @@ body {
 
 }
 
-#homepage-logo:hover {
+/* #homepage-logo:hover {
   transform: rotate(360deg);
   -webkit-transform: rotate(360deg);
   transition: transform 0.8s ease-in-out;
 
   
-}
+} */
 
 /* #main_menu {
   background-color: #6FDA44;

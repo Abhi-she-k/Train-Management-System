@@ -10,7 +10,7 @@ app = Flask(__name__)
 def home_page():
     return render_template('home.html')
 
-@app.route('/form_req_login', methods=['POST','GET'])
+@app.route('/login', methods=['POST','GET'])
 def req_login():
     userName = request.form['username']
     password = request.form['password']
@@ -21,7 +21,7 @@ def req_login():
     else:
       return render_template('login.html',info='Invalid Info')
     
-@app.route('/form_sign_up', methods=['POST','GET'])
+@app.route('/signup', methods=['POST','GET'])
 def sign_up():
     userName = request.form['username']
     password = request.form['password']
@@ -30,7 +30,7 @@ def sign_up():
   
 
 
-if __name__ == "main":
+if __name__ == "__main__":
     app.run(host='0.0.0.0', port=random.randint(2000, 9000), debug=True)
 
 

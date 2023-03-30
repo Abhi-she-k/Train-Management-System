@@ -8,9 +8,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
   <title>Track Master | Hompage</title>
-  <link rel="shortcut icon" href="/images/favicon.ico" />
-  <link rel="apple-touch-icon" href="/images/favicon.ico" />
-  <link href="home-styles.css" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
+  <link rel="apple-touch-icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/home-styles.css') }}" />
+
 </head>
 
 <body>
@@ -42,16 +43,15 @@
     <a href="/form_req_login">Login</a>
   </div>
 
-  
 
   <div id="train">
-    <img src="/images/train2.jpg" alt="">
+    <img src="{{ url_for('static',filename='images/train2.jpg') }}" alt="">
   </div>
 
   <div id="main_menu">
     <div id="nav-back">
       <div class="logo_area">
-        <a><img id="homepage-logo" src="/images/train_logo.png" alt=""></a>
+        <a><img id="homepage-logo" src="{{ url_for('static',filename='images/train_logo.png') }}" alt=""></a>
       </div>
 
       <div id="test" class="inner_main_menu">
