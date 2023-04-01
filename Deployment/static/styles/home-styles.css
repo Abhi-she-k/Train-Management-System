@@ -94,7 +94,7 @@ body {
 .inner_main_menu ul li:hover ul {
   display: inline-block;
   left: 0px;
-  text-align: center;
+  text-align: left;
   color: #13818D;
 }
 

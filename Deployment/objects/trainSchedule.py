@@ -7,7 +7,7 @@ class trainSchedule():
         self.trains = []
 
     def addTrains(self, train):
-        with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json', 'r') as f:
+        with open('objects/trainSchedule.json', 'r') as f:
           data = json.load(f)
 
         new_train = {
@@ -22,14 +22,14 @@ class trainSchedule():
             system["trains"].append(new_train)
             break
     
-        with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json', 'w') as f:
+        with open('objects/trainSchedule.json', 'w') as f:
           json.dump(data, f, indent=4)
           self.trains.append(train)
 
 
     def removeTrain(self, train):
       
-      with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json', 'r') as f:
+      with open('objects/trainSchedule.json', 'r') as f:
           data = json.load(f)
   
       for system in data["systems"]:
@@ -39,7 +39,7 @@ class trainSchedule():
                       system["trains"].remove(t)
                       break
   
-      with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json', 'w') as f:
+      with open('objects/trainSchedule.json', 'w') as f:
           json.dump(data, f, indent=4)
       self.trains.remove(train)
 
@@ -83,6 +83,6 @@ class trainSchedule():
           t1 = datetime.strptime(t.schedule[startStation], "%H:%M")
           t2 = datetime.strptime(t.schedule[endStation], "%H:%M")
           if(t1<=t2):
-            t.print()
+            t.printTrain()
             r.append(t)
       return r

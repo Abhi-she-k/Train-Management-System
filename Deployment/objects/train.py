@@ -54,7 +54,7 @@ class train():
     def getTimesAsList(self):
       return list(self.schedule.values())
       
-    def print(self):
+    def printTrain(self):
       print(" ")
       print(self.name+":")
       print("-" * 50)
@@ -62,7 +62,12 @@ class train():
       for key, value in self.schedule.items():
         print(str(key) + " ----- " + value)
       print("-" * 50)
+    
+    def getSchedules(self):
+      return self.schedule
       
+    def getName(self):
+      return self.name
       
       
       

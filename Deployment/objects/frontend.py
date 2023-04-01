@@ -1,16 +1,16 @@
 import json
-from route import *
-from station import *
-from user import *
-from admin import *
-from trainSchedule import *
-from train import *
+from objects.route import route
+from objects.station import station
+from objects.user import user
+from objects.admin import admin
+from objects.trainSchedule import trainSchedule
+from objects.train import train
 
 systemObjects = []
 curAdmin = admin(None,None,None,None)
 
 def createObjects():
-  with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json', 'r') as f:
+  with open('objects/trainSchedule.json', 'r') as f:
     data = json.load(f)
 
   for system in data['systems']:
@@ -141,7 +141,7 @@ def admin_login():
         newSystem = trainSchedule(scheduleID)
         systemObjects.append(newSystem)
         
-        with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json', 'r') as f:
+        with open('objects/trainSchedule.json', 'r') as f:
           data = json.load(f)
 
         new_system = {
@@ -151,7 +151,7 @@ def admin_login():
 
         data["systems"].append(new_system)
 
-        with open('C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json', 'w') as f:
+        with open('objects/trainSchedule.json', 'w') as f:
           json.dump(data, f, indent=4)
       
       elif admin_choice == '3':
