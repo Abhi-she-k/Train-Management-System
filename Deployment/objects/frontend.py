@@ -5,7 +5,6 @@ from user import *
 from admin import *
 from trainSchedule import *
 from train import *
-from user import *
 
 systemObjects = []
 curAdmin = admin(None,None,None,None)
