@@ -28,11 +28,10 @@ def req_login():
 
         valid = curAdmin.login(username,password)
         if valid:
-            print('login successful')
+            #flash('Logged in Successfully', category='success')
             return render_template('admin-home.html')
         else:
-            print('login failed')
-            return render_template('login.html', info='Invalid Info')
+            flash('Invalid Information', category='error')
     
     return render_template('login.html')
     
@@ -59,9 +58,11 @@ def sign_up():
         else:
             valid = curAdmin.register(username,password, userkey)
             if valid:
-                flash('Account created sucessfully', category='success')
+                flash('Account created sucessfully. Redirecting to login in 3 seconds...', category='success')
+                return render_template('signup.html'), {"Refresh": "3; url=/login"}
+
             else:
-                flash('Unable to creat account', category='error')
+                flash('Unable to create account', category='error')
 
     return render_template('signup.html')
 
