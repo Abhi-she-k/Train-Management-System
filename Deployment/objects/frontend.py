@@ -94,7 +94,8 @@ def admin_login():
       print("1. Create Schedule ")
       print("2. Create System ")
       print("3. Remove From Schedule ")
-      print("4. Logout")
+      print("4. Remove System ")
+      print("5. Logout")
       print(" ")
       admin_choice = input("Please enter your choice(1-4): ")
  
@@ -169,8 +170,22 @@ def admin_login():
           print("Error: Train not found")
           return
         sys.removeTrain(t)
-      
+
       elif admin_choice == '4':
+        sysId = input("Enter a System ID: ")
+        sysExists = False
+        sys = None
+        for i in systemObjects:
+          if i.scheduleId == sysId:
+            systemObjects.remove(i)
+            sys.removeSystem(t)
+            sysExists = True
+            sys = i
+        if not sysExists:
+          print("Error: System not found")
+          return
+        
+      elif admin_choice == '5':
         print("")
         print("Loggin out...")
         curAdmin.logout()

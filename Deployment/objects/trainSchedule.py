@@ -43,6 +43,19 @@ class trainSchedule():
           json.dump(data, f, indent=4)
       self.trains.remove(train)
 
+    def removeTrain(self):
+      
+      with open('objects/trainSchedule.json', 'r') as f:
+          data = json.load(f)
+  
+      for system in data["systems"]:
+          if system["id"] == self.scheduleId:
+              data["systems"].remove(system)
+              break
+  
+      with open('objects/trainSchedule.json', 'w') as f:
+          json.dump(data, f, indent=4)
+
     def update(self, oldTrain, newTrain):
       for i in range(len(self.trains)):
         if(self.trains[i] == oldTrain):
