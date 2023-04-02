@@ -1,8 +1,9 @@
-#from user import *
-#from trainSchedule import *
-from objects.user import user
-from objects.trainSchedule import trainSchedule
+from user import *
+from trainSchedule import *
+# from user import user
+# from trainSchedule import trainSchedule
 import json
+path = 'C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/adminInfo.json'
 
 class admin(user):
     def __init__(self, firstName, lastName, userType, userId):
@@ -11,7 +12,7 @@ class admin(user):
       
     def register(self, userName, password, adminKey):
       data = None
-      with open('objects/adminInfo.json', 'r') as f:
+      with open(path, 'r') as f:
         data = json.load(f)
       if not adminKey == data["adminKey"]:
         return False
@@ -20,13 +21,13 @@ class admin(user):
         "password" : password
       }
       data["admins"].append(newAdmin)
-      with open("adminInfo.json", 'w') as f:
+      with open(path, 'w') as f:
         json.dump(data, f, indent=4)
       return True
 
     def login(self, userName, password):
       data = None
-      with open('objects/adminInfo.json') as f: 
+      with open(path) as f: 
         data = json.load(f)
       #check if username exists and password matches given username's password
       for admin in data["admins"]:

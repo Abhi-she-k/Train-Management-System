@@ -1,13 +1,15 @@
 from datetime import datetime, timedelta
 import json
 
+path  = 'C:/Users/abhis/Desktop\cps406/Train-Management-System/Deployment/objects/trainSchedule.json'
 class trainSchedule():
     def __init__(self, scheduleId) -> None:
         self.scheduleId = scheduleId
         self.trains = []
 
     def addTrains(self, train):
-        with open('objects/trainSchedule.json', 'r') as f:
+      if(self.checkConflicts(train)):
+        with open(path, 'r') as f:
           data = json.load(f)
 
         new_train = {
@@ -22,14 +24,14 @@ class trainSchedule():
             system["trains"].append(new_train)
             break
     
-        with open('objects/trainSchedule.json', 'w') as f:
+        with open(path, 'w') as f:
           json.dump(data, f, indent=4)
           self.trains.append(train)
 
 
     def removeTrain(self, train):
       
-      with open('objects/trainSchedule.json', 'r') as f:
+      with open(path, 'r') as f:
           data = json.load(f)
   
       for system in data["systems"]:
@@ -39,13 +41,13 @@ class trainSchedule():
                       system["trains"].remove(t)
                       break
   
-      with open('objects/trainSchedule.json', 'w') as f:
+      with open(path, 'w') as f:
           json.dump(data, f, indent=4)
       self.trains.remove(train)
 
-    def removeTrain(self):
+    def removeSystem(self):
       
-      with open('objects/trainSchedule.json', 'r') as f:
+      with open(path, 'r') as f:
           data = json.load(f)
   
       for system in data["systems"]:
@@ -53,7 +55,7 @@ class trainSchedule():
               data["systems"].remove(system)
               break
   
-      with open('objects/trainSchedule.json', 'w') as f:
+      with open(path, 'w') as f:
           json.dump(data, f, indent=4)
 
     def update(self, oldTrain, newTrain):
@@ -84,7 +86,7 @@ class trainSchedule():
       print(" ")
       print(self.scheduleId)
       for trains in self.trains:
-        trains.print()
+        trains.printTrain()
       print(" ")
     
     def findRoute(self, startStation, endStation):

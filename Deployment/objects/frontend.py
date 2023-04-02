@@ -1,16 +1,20 @@
 import json
-from objects.route import route
-from objects.station import station
-from objects.user import user
-from objects.admin import admin
-from objects.trainSchedule import trainSchedule
-from objects.train import train
+from route import *
+from station import *
+from user import *
+from admin import *
+from trainSchedule import *
+from train import *
+import os
+import sys
 
 systemObjects = []
 curAdmin = admin(None,None,None,None)
+abs_path = os.path.join('objects/', 'trainSchedule.json')
+path  = 'C:/Users/abhis/Desktop\cps406/Train-Management-System/Deployment/objects/trainSchedule.json'
 
 def createObjects():
-  with open('objects/trainSchedule.json', 'r') as f:
+  with open(path, 'r') as f:
     data = json.load(f)
 
   for system in data['systems']:
@@ -95,9 +99,10 @@ def admin_login():
       print("2. Create System ")
       print("3. Remove From Schedule ")
       print("4. Remove System ")
-      print("5. Logout")
+      print("5. View Train Schedules ")
+      print("6. Logout")
       print(" ")
-      admin_choice = input("Please enter your choice(1-4): ")
+      admin_choice = input("Please enter your choice(1-5): ")
  
       if admin_choice == '1':  
         system = input("Enter System Name: ")
@@ -105,36 +110,38 @@ def admin_login():
           if(i.scheduleId == system):
             sys = i
             valid_sys = True
-        if(not valid_sys):
+        if(valid_sys == False):
           print("Not a Valid System")
-          
-        departureTime = input("Enter the Departure Time (hh:mm): ")
-        name = input("Name of Train: ")
+        else:
+          departureTime = input("Enter the Departure Time (hh:mm): ")
+          name = input("Name of Train: ")
 
-        while(True): 
-          stat = input("Enter Stations (Press / to exit): ")
-          if(stat == "/"):
-            break
-          stations.append(stat)
-          print(stations)
-        while(True):
-          bet = input("Enter ETA between stations (Press / to exit): ")
-          if(bet == "/"):
-            break
-          timeBet.append(int(bet))
-          print(timeBet)
-          if(len(timeBet) >= len(stations)):
-            print("Too many times!")
-            break
-    
-        newRoute = route()
-        for i in range(len(stations)):
-          newRoute.addStation(station(i, stations[i]))  
-        newTrain = train(name, newRoute, timeBet, departureTime)
-        sys.addTrains(newTrain)
-        sys.viewTrainSchedule()
-        print("Train added")
-        print(" ")
+          while(True): 
+            stat = input("Enter Stations (Press / to exit): ")
+            if(stat == "/"):
+              break
+            stations.append(stat)
+            print(stations)
+          while(True):
+            bet = input("Enter ETA between stations (Press / to exit): ")
+            if(bet == "/"):
+              break
+            timeBet.append(int(bet))
+            print(timeBet)
+            if(len(timeBet) >= len(stations)):
+              print("Too many times!")
+              break
+          if(len(bet) == len(stat)-1):
+            newRoute = route()
+            for i in range(len(stations)):
+              newRoute.addStation(station(i, stations[i]))  
+            newTrain = train(name, newRoute, timeBet, departureTime)
+            sys.addTrains(newTrain)
+            sys.viewTrainSchedule()
+            print("Train added")
+            print(" ")
+          else:
+            print("Times do not match")
 
         
       elif admin_choice == '2':
@@ -142,7 +149,7 @@ def admin_login():
         newSystem = trainSchedule(scheduleID)
         systemObjects.append(newSystem)
         
-        with open('objects/trainSchedule.json', 'r') as f:
+        with open(path, 'r') as f:
           data = json.load(f)
 
         new_system = {
@@ -152,7 +159,7 @@ def admin_login():
 
         data["systems"].append(new_system)
 
-        with open('objects/trainSchedule.json', 'w') as f:
+        with open(path, 'w') as f:
           json.dump(data, f, indent=4)
       
       elif admin_choice == '3':
@@ -178,14 +185,18 @@ def admin_login():
         for i in systemObjects:
           if i.scheduleId == sysId:
             systemObjects.remove(i)
-            sys.removeSystem(t)
-            sysExists = True
             sys = i
+            sys.removeSystem()
+            sysExists = True
+            
         if not sysExists:
           print("Error: System not found")
           return
         
       elif admin_choice == '5':
+          view_train_schedule()
+
+      elif admin_choice == '6':
         print("")
         print("Loggin out...")
         curAdmin.logout()
@@ -194,28 +205,37 @@ def admin_login():
         print("")
       else: 
         print("Invalid Input")
-    
-if __name__ == "__main__":
-  createObjects()
 
-  while True:
-    print_menu()
+try:    
+  if __name__ == "__main__":
+    createObjects()
+
+    while True:
+      print_menu()
+      
+      user_choice = input("Please enter your choice (1-5): ")
+      print(" ")
     
-    user_choice = input("Please enter your choice (1-5): ")
-    print(" ")
+      if user_choice == "1":
+        view_train_schedule()
+      elif user_choice == "2":
+        find_route()
+      elif user_choice == "3":
+        calculate_route()
+      elif user_choice == "4":
+        admin_login()
+      elif user_choice == "5":
+        print("Thank You for using the Train Management System. Goodbye!")
+        systemObjects = []
+        break
+      else:
+        print("Invalid Input")
+except KeyboardInterrupt:
+  print("Exiting........")
+  systemObjects = []
+  import sys
+  sys.exit()
   
-    if user_choice == "1":
-      view_train_schedule()
-    elif user_choice == "2":
-      find_route()
-    elif user_choice == "3":
-      calculate_route()
-    elif user_choice == "4":
-      admin_login()
-    elif user_choice == "5":
-      print("Thank You for using the Train Management System. Goodbye!")
-      systemObjects = []
-      break
-    else:
-      print("Invalid Input")
+  
+
   
