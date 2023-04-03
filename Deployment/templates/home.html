@@ -11,6 +11,7 @@
   <link rel="shortcut icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
   <link rel="apple-touch-icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/home-styles.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
 
@@ -36,7 +37,19 @@
   </div>
 
   <div id="footer">
+    <h3><a href="#">Accessibility</a></h3>
+    <h3><a href="#">Privacy</a></h3>
+    <h3><a href="#">Terms of Use</a></h3>
+
+    <div>
+      <i class="fa-brands fa-twitter"></i>
+      <i class="fa-brands fa-facebook"></i>
+      <i class="fa-brands fa-instagram"></i>
+      <i class="fa-brands fa-youtube"></i>
+    </div>     
+
     <h5>Copyright &copy; 2023, Track Master. All Rights Reserved</h5>
+
   </div>
 
   <div id="login">
@@ -62,12 +75,11 @@
           <li><a style="pointer-events: none; cursor: default;" href="">Trains</a>
             <ul>
               <li><a href="/find_route">Trip Planner</a></li>
-              <li><a href="/schedules">Schedules</a></li>
               <li><a href="/eta">ETA</a></li>
             </ul>
           </li>
           <li><a href="/contact">Contact</a></li>
-          <li><a href="/maps">Maps</a></li>
+          <li><a href="/schedules">Schedules</a></li>
           <li><a href="/faq">FAQ</a></li>
         </ul>
       </div>

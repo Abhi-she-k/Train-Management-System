@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 *{
   margin: 0;
   padding: 0;
   list-style: none;
   text-decoration: none;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 #main.title {
@@ -20,7 +20,7 @@
 }
 
 body {
-  background-color: #CDD6DC;
+  background-color: #e4e9f7;
   margin: 0;
   padding: 0;
 }
@@ -61,8 +61,8 @@ body {
 .inner_main_menu ul li:nth-child(5),
 .inner_main_menu ul li:nth-child(6) {
   background-color: none;
-  padding-left: 30px;
-  padding-right: 20px;
+  padding-left: 0px;
+  padding-right: 30px;
   padding-top: 10px;
 
 }
@@ -73,7 +73,7 @@ body {
   text-transform: uppercase;
   text-decoration: none;
   display: block;
-  padding: 10px 20px;
+  padding: 0px 20px;
 }
 
 .inner_main_menu ul li a:hover {
@@ -196,7 +196,7 @@ body {
 
 #welcome{
   position: fixed;
-  margin-left: 17%;
+  margin-left: 16%;
   z-index: 2;
   margin-top: 10%;
   color: black;
@@ -269,4 +269,8 @@ body {
 #login a{
   text-decoration: underline;
 
+}
+
+#footer h3 a {
+  color: white;
 }
