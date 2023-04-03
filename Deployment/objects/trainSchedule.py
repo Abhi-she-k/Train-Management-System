@@ -58,20 +58,20 @@ class trainSchedule():
       with open(path, 'w') as f:
           json.dump(data, f, indent=4)
 
-    def update(self, oldTrain, newTrain):
-      for i in range(len(self.trains)):
-        if(self.trains[i] == oldTrain):
-          self.trains[i] = newTrain
+    # def update(self, oldTrain, newTrain):
+    #   for i in range(len(self.trains)):
+    #     if(self.trains[i] == oldTrain):
+    #       self.trains[i] = newTrain
 
-      return self.trains
+    #   return self.trains
 
     def calculateTrip(self, train, start, end):
         return train.calculateTrip(start, end)
       
     def checkConflicts(self, checkTrain):
-      checkStations = checkTrain.stations
+      checkStations = checkTrain.getStatAsList()
       for train in self.trains:
-        stations = train.stations
+        stations = train.getStatAsList()
         for station in stations:
           if(station in checkStations):
             checkTT = datetime.strptime(checkTrain.schedule[station], '%H:%M')

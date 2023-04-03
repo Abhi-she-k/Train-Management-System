@@ -11,14 +11,6 @@ class train():
       self.depart = depart
       self.calculateSchedule(depart)
       
-
-    def updateRoute(self, newRoute, timeBetweenStat, name, departTime):
-      self.id = id
-      self.name = name
-      self.route = newRoute
-      self.time = timeBetweenStat
-      self.length = len(self.newRoute.stations)
-      self.calculateSchedule(departTime)
       
     def calculateSchedule(self, departTime):
       start = self.stations[0].name
@@ -32,6 +24,8 @@ class train():
         self.schedule[stations[i+1].name] = endTimeStr
         departTime = endTimeStr
 
+      return self.schedule
+
     def calculateTrip(self, startStation, endStation):
       startTime = self.schedule[startStation]
       endTime = self.schedule[endStation]
@@ -41,7 +35,7 @@ class train():
       diff = end - start
       diffMinutes = diff.total_seconds() / 60
 
-      return diffMinutes
+      return abs(round(diffMinutes))
 
 
     def getStatAsList(self):
