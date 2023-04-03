@@ -1,13 +1,25 @@
 {
-  "adminKey": "admin321",
-  "admins": [
-    {
-      "username": "admin1",
-      "password": "conductor1234"
-    },
-    {
-      "username": "admin2",
-      "password": "railway456"
-    }
-  ]
+    "adminKey": "admin321",
+    "admins": [
+        {
+            "username": "admin1",
+            "password": "conductor1234"
+        },
+        {
+            "username": "admin2",
+            "password": "railway456"
+        },
+        {
+            "username": "admin3",
+            "password": "password3"
+        },
+        {
+            "username": "admin3",
+            "password": "password3"
+        },
+        {
+            "username": "admin3",
+            "password": "password3"
+        }
+    ]
 }

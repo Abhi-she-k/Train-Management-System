@@ -131,7 +131,7 @@ def admin_login():
             if(len(timeBet) >= len(stations)):
               print("Too many times!")
               break
-          if(len(bet) == len(stat)-1):
+          if(len(timeBet) == len(stations)-1):
             newRoute = route()
             for i in range(len(stations)):
               newRoute.addStation(station(i, stations[i]))  
@@ -142,6 +142,7 @@ def admin_login():
             print(" ")
           else:
             print("Times do not match")
+          valid_sys = False
 
         
       elif admin_choice == '2':
