@@ -9,7 +9,6 @@ from objects.user import user
 from objects.admin import admin
 from objects.trainSchedule import trainSchedule
 from objects.train import train
-#from objects.createObjects import createObjects
 
 # template = os.path.abspath('~/public/Frontend/templates')
 app = Flask(__name__)
@@ -56,7 +55,7 @@ def req_login():
         valid = curAdmin.login(username,password)
         if valid:
             #flash('Logged in Successfully', category='success')
-            return render_template('admin-home.html')
+            return render_template('admin_home.html', user=username)
         else:
             flash('Invalid Information', category='error')
     
@@ -110,45 +109,122 @@ def faq():
     return render_template('faq.html')
 
 @app.route('/find_route', methods=['GET', 'POST'])
-def route():
+def route1():
+    info = {}
+
     if request.method == 'POST':
         startStation = request.form.get('start-station')
         endStation = request.form.get('end-station')
-
         stations = []
         for i in systemObjects:
             x = (i.findRoute(startStation.strip(), endStation.strip()))
             if x != []:
                 stations.append(x)
 
-        # info = {}
-        # for i in stations:
-        #     for j in i:
-        #         info[j.getName()] = j.getSchedules()
+        for i in stations:
+            for j in i:
+                info[j.getName()] = j.getSchedules()
 
-        info = {"brand": "Ford", "model": "Mustang", "year": 1964}
         return render_template('find_route.html', info=info)
         
-        # s = stations[0][0].getSchedules()
-
-        # for key, value in s.items():
-        #     print(key, value)
-
-        # for i, j in s:
-        #     print(i, j)
-
-        #stations[0].printTrain()
-        
-    return render_template('find_route.html')
+    return render_template('find_route.html', info=info)
 
 @app.route('/schedules')
 def schedules():
-    return render_template('schedules.html')
 
-@app.route('/eta')
+    info = {}
+    
+    for i in systemObjects:
+        stations = {}
+        for j in i.getTrains():
+            stations[j.getName()] = j.getSchedules()
+        info[i.getScheduleId()] = stations
+    
+    return render_template('schedules.html', info=info)
+
+@app.route('/eta', methods=['GET', 'POST'])
 def eta():
+
+    if request.method == 'POST':    
+        startStation = request.form.get('start-station')
+        endStation = request.form.get('end-station')
+    
+        #calculate_route(startStation, endStation)
+        times = []
+        trains = []
+        for i in systemObjects:
+            r = (i.findRoute(startStation.strip(), endStation.strip()))
+            if r != []:
+                trains.append(r)
+            
+            print(r)
+
+    # print("Estimated Times: ")
+    # times = []
+    # for i in systemObjects:
+    #     r = i.findRoute(startStation.strip(), endStation.strip())
+    #     for t in r:
+    #     time = t.calculateTrip(startStation.strip(), endStation.strip())
+    #     times.append([time, t.schedule[startStation.strip()], t.schedule[endStation.strip()]])
+
+    # times.sort()
+    
+    # for t in times:
+    #     print(startStation.strip() + " -----> " + endStation.strip() + ": " , abs(round(t[0])) , "min, " , t[1] , "-" , t[2])
+
+
     return render_template('eta.html')
 
+@app.route('/create_system', methods=['GET', 'POST'])
+def create_system():
+
+    if request.method == 'POST':    
+        scheduleID = request.form.get('schedule-id')
+    
+    # scheduleID = input("Enter a System ID: ")
+    # newSystem = trainSchedule(scheduleID)
+    # systemObjects.append(newSystem)
+        
+    # with open('C:/Users/Sufyan Ghani/Desktop/TMS/Train-Management-System/Deployment/objects/trainSchedule.json', 'r') as f:
+    #   data = json.load(f)
+
+    # new_system = {
+    #     "id": scheduleID,
+    #     "trains": []
+    # }
+
+    # data["systems"].append(new_system)
+    # with open('C:/Users/Sufyan Ghani/Desktop/TMS/Train-Management-System/Deployment/objects/trainSchedule.json', 'w') as f:
+    #     json.dump(data, f, indent=4)
+          
+    return render_template('create_system.html')
+
+@app.route('/create_schedule', methods=['GET', 'POST'])
+def create_schedule():
+    return render_template('create_schedule.html')
+
+@app.route('/remove_from_schedule', methods=['GET', 'POST'])
+def remove_from_schedule():
+
+    if request.method == 'POST':    
+        trainId = request.form.get('train-id')
+
+    # trainId = input("Enter a train ID: ")
+    # trainExists = False
+    # t = None
+    # sys = None
+    # for i in systemObjects:
+    #     for j in i.trains:
+    #         if j.name == trainId:
+    #             t = j
+    #             trainExists = True
+    #             sys = i
+    # if not trainExists:
+    #     print("Error: Train not found")
+    #     return
+    # sys.removeTrain(t)
+        
+    return render_template('remove_from_schedule.html')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=random.randint(2000, 9000), debug=True)

@@ -236,7 +236,3 @@ except KeyboardInterrupt:
   systemObjects = []
   import sys
   sys.exit()
-  
-  
-
-  

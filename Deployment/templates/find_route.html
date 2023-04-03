@@ -34,9 +34,21 @@
 
   <div>
 
-    {% for key, value in info.items() %}
-			<li>{{ key }}: {{ value }}</li>
-		{% endfor %}
+    {% for line_name, stations in info.items() %}
+      <h1>{{ line_name }}</h1>
+      <table>
+        <tr>
+          <th>Station</th>
+          <th>Time</th>
+        </tr>
+        {% for station_name, time in stations.items() %}
+          <tr>
+            <td>{{ station_name }}</td>
+            <td>{{ time }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% endfor %}
 
   </div>
 

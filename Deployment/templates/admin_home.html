@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <title>Track Master | Admin Homepage</title>
+  <link rel="shortcut icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
+  <link rel="apple-touch-icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
+  <link href="{{ url_for('static',filename='styles/admin_home-styles.css') }}" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo_details">
+      <div class="logo_name">Track Master</div>
+      <i class="fa-solid fa-bars" id="btn"></i>
+    </div>
+    <ul class="nav-list">
+      <li>
+        <a href="#">
+          <i class="fas fa-home"></i>
+          <span class="link_name">Home</span>
+        </a>
+        <span class="tooltip">Home</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-calendar"></i>
+          <span class="link_name">Create System</span>
+        </a>
+        <span class="tooltip">Create System</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-calendar-plus"></i>
+          <span class="link_name">Create Schedule</span>
+        </a>
+        <span class="tooltip">Create Schedule</span>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-calendar-week"></i>
+          <span class="link_name">Remove from Schedule</span>
+        </a>
+        <span class="tooltip">Remove from Schedule</span>
+      </li>
+
+      <li>
+        <a href="#">
+          <i class="fa-solid fa-gear"></i>
+          <span class="link_name">Settings</span>
+        </a>
+        <span class="tooltip">Settings</span>
+      </li>
+      <li class="profile">
+        <i class="fa fa-sign-out" id="log_out"></i>
+      </li>
+
+    </ul>
+  </div>
+  <section class="home-section">
+    <div class="text">Dashboard</div>
+
+    <div id="greeting"><h1>Welcome {{ user }} </h1></div>
+  </section>
+
+  <script>
+    window.onload = function () {
+      const sidebar = document.querySelector(".sidebar");
+      const closeBtn = document.querySelector("#btn");
+      const searchBtn = document.querySelector(".bx-search")
+
+      closeBtn.addEventListener("click", function () {
+        sidebar.classList.toggle("open")
+        menuBtnChange()
+      })
+
+      searchBtn.addEventListener("click", function () {
+        sidebar.classList.toggle("open")
+        menuBtnChange()
+      })
+
+      function menuBtnChange() {
+        if (sidebar.classList.contains("open")) {
+          closeBtn.classList.replace("bx-menu", "bx-menu-alt-right")
+        } else {
+          closeBtn.classList.replace("bx-menu-alt-right", "bx-menu")
+        }
+      }
+    }
+  </script>
+
+</body>
+
+</html>

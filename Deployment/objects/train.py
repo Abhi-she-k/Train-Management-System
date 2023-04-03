@@ -63,7 +63,3 @@ class train():
     def getName(self):
       return self.name
       
-      
-      
-      
-  

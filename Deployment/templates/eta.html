@@ -9,11 +9,29 @@
   <title>Track Master | ETA</title>
   <link rel="shortcut icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
   <link rel="apple-touch-icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
-  <link href="{{ url_for('static',filename='styles/maps-styles.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ url_for('static',filename='styles/eta-styles.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-    
+
+  <div class="form-container">
+    <h1 id="form-title">Calculate ETA</h1>
+
+    <form name="user-info" id="form-box" method="POST">
+      <div class="info-box" id="info1">
+        <label for="user-info">Starting Station:</label><br>
+        <input id="name" type="text" name="start-station" placeholder="Danforth"><br>
+      </div>
+
+      <div class="info-box" id="info2">
+        <label for="user-info">Ending Station:</label><br>
+        <input id="password" type="text" name="end-station" placeholder="Union"><br>
+      </div>
+
+      <input id="login-button" type="submit" value="Search">
+    </form>
+  </div>
+
 </body>
 
 </html>

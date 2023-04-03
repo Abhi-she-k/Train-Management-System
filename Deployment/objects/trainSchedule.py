@@ -101,3 +101,9 @@ class trainSchedule():
             t.printTrain()
             r.append(t)
       return r
+    
+    def getScheduleId(self):
+      return self.scheduleId
+      
+    def getTrains(self):
+      return self.trains
