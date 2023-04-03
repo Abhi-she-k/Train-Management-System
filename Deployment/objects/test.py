@@ -5,43 +5,36 @@ from admin import *
 from trainSchedule import *
 from train import *
 from user import *
+import unittest
 
-TTCAdmin = admin("Lebron", "James", "Admin", 3243323)
+class TestStringMethods(unittest.TestCase):
 
-stations1 = ["Kipling", "Islington", "Royal York", "Old Mill", "Jane", "Runnymede", "HighPark", "Keele", "Dundas West"]
-stations2 = ["Christie", "Bathurst", "Spadina", "St. George", "Bay", "Bloor-Yonge", "Sherbourne", "Castle Frank", "Broadview" ]
-stations3 = ["Chester", "Pape", "Donlands", "Greenwood", "Coxwell", "Woodbine", "Main Street", "Victoria Park", "Warden"]
+    def testRoute(self):
+      r = route()
+      s1 = station(1, "Kennedy")
+      s2 = station(2, "Warden")
+      self.assertEqual(r.addStation(s1), [s1])
+      self.assertEqual(r.addStation(s2), [s1, s2])
+      self.assertEqual(r.removeStation(s1), [s2])
 
-route1 = route()
-route2 = route()
-route3 = route()
+    def testAdmin(self):
+      a = admin(None,None,None,None)
+      # Test login
+      self.assertTrue(a.login("admin1", "conductor1234"))
+      self.assertFalse(a.login("",""))
+      self.assertTrue(a.login("admin1", "railway456"))
+      self.assertFalse(a.login("oaspdlkjhf", "la;skdjf"))
 
-for i in range(len(stations1)):
-    stat1 = station(i, stations1[i])
-    stat2 = station(i, stations2[i])
-    stat3 = station(i, stations3[i])
-    route1.addStation(stat1)
-    route2.addStation(stat2)
-    route3.addStation(stat3)
+      
+    def test_split(self):
+        s = 'hello world'
+        self.assertEqual(s.split(), ['hello', 'world'])
+        # check that s.split fails when the separator is not a string
+        with self.assertRaises(TypeError):
+            s.split(2)
 
-train1 = train("line1Train", route1, [2,3,4,2,2,1,2,6], "5:00")
-train2 = train("line2Train", route2, [8,5,3,2,1,1,1,3], "1:30")
-train3 = train("line3Train", route3, [1,10,2,3,1,9,9,7], "6:45")
-train4 = train("line4Train", route3, [1,10,2,3,1,9,9,7], "2:45")
-train5 = train("line5Train", route3, [1,10,2,3,1,9,9,7], "6:45")
-
-TTCAdmin.createSchedule("Toronto Train Line")
-TTCAdmin.addToSchedule("Toronto Train Line",train1)
-TTCAdmin.addToSchedule("Toronto Train Line",train2)
-TTCAdmin.addToSchedule("Toronto Train Line",train3)
-TTCAdmin.addToSchedule("Toronto Train Line",train4)
-
-TTCAdmin.removeFromSchedule("Toronto Train Line",train1)
-TTCAdmin.removeFromSchedule("Toronto Train Line",train2)
-TTCAdmin.removeFromSchedule("Toronto Train Line",train3)
-TTCAdmin.removeFromSchedule("Toronto Train Line",train4)
-
-TTCAdmin.trainSystems["Toronto Train Line"].print()
+if __name__ == '__main__':
+    unittest.main()
 
 
 
