@@ -4,11 +4,11 @@ class route():
 
     def addStation(self, newStation):
       self.stations.append(newStation)
-      return self.station
+      return self.stations
 
     def removeStation(self, station):
       self.stations.remove(station)
-      return self.station
+      return self.stations
 
     def print(self):
       for stations in self.stations:
