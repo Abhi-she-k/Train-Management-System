@@ -70,7 +70,7 @@ class TestStringMethods(unittest.TestCase):
       # Test register
       self.assertTrue(a.register("admin3", "password3","admin321"))
       self.assertFalse(a.register("newadmin", "testpass", ""))
-      self.assertTrue(a.register("newadmin", "testpass", "las;kdjf"))
+      self.assertFalse(a.register("newadmin", "testpass", "las;kdjf"))
       
       # Test login
       self.assertTrue(a.login("admin1", "conductor1234"))
