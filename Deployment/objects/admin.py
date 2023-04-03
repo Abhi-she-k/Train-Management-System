@@ -3,7 +3,7 @@ from trainSchedule import *
 # from user import user
 # from trainSchedule import trainSchedule
 import json
-path = 'C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/adminInfo.json'
+path = '/Users/abhishekpaul/Desktop/CPS406/Train-Management-System/Deployment/objects/adminInfo.json'
 
 class admin(user):
     def __init__(self, firstName, lastName, userType, userId):
