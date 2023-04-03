@@ -11,7 +11,7 @@ import sys
 systemObjects = []
 curAdmin = admin(None,None,None,None)
 abs_path = os.path.join('objects/', 'trainSchedule.json')
-path  = 'C:/Users/abhis/Desktop\cps406/Train-Management-System/Deployment/objects/trainSchedule.json'
+path  = '/Users/abhishekpaul/Desktop/CPS406/Train-Management-System/Deployment/objects/trainSchedule.json'
 
 def createObjects():
   with open(path, 'r') as f:
@@ -176,8 +176,8 @@ def admin_login():
               sys = i
         if not trainExists:
           print("Error: Train not found")
-          return
-        sys.removeTrain(t)
+        else:
+          sys.removeTrain(t)
 
       elif admin_choice == '4':
         sysId = input("Enter a System ID: ")
