@@ -20,65 +20,89 @@
 </head>
 
 <body>
-  <!-- <div class="sidebar">
+  <div class="sidenavbar">
     <div class="logo_details">
-      <div class="logo_name">Track Master</div>
-      <i class="fa-solid fa-bars" id="btn"></i>
+        <div class="logo_name">Track Master</div>
+        <i class="fa-solid fa-bars" id="btn"></i>
     </div>
-
-    <ul class="list-nav">
-      <li>
-        <a href="/admin_home">
-          <i class="fas fa-home"></i>
-          <span class="link_name">Home</span>
-        </a>
-        <span class="tooltip">Home</span>
-      </li>
-      <li>
-        <a href="/create_system">
-          <i class="fa fa-calendar"></i>
-          <span class="link_name">Create System</span>
-        </a>
-        <span class="tooltip">Create System</span>
-      </li>
-      <li>
-        <a href="remove_system">
-          <i class="fa fa-calendar-xmark"></i>
-          <span class="link_name">Remove System</span>
-        </a>
-        <span class="tooltip">Remove System</span>
-      </li>
-      <li>
-        <a href="create_schedule">
-          <i class="fa fa-calendar-plus"></i>
-          <span class="link_name">Create Schedule</span>
-        </a>
-        <span class="tooltip">Create Schedule</span>
-      </li>
-      <li>
-        <a href="remove_from_schedule">
-          <i class="fa fa-calendar-week"></i>
-          <span class="link_name">Remove from Schedule</span>
-        </a>
-        <span class="tooltip">Remove from Schedule</span>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa-solid fa-user"></i>
-          <span class="link_name">User Account</span>
-        </a>
-        <span class="tooltip">User Account</span>
-      </li>
-      <li class="profile">
-        <i class="fa fa-sign-out" id="log_out"></i>
-      </li>
+    <ul class="nav-list">
+        <li>
+            <a href="/admin_home">
+                <div class="icon-div"><i class="fas fa-home"></i></div>
+                <span class="link_name">Home</span>
+            </a>
+            <span class="infotool">Home</span>
+        </li>
+        <li>
+            <a href="/create_system">
+                <div class="icon-div"><i class="fa fa-calendar"></i></div>
+                <span class="link_name">Create System</span>
+            </a>
+            <span class="infotool">Create System</span>
+        </li>
+        <li>
+            <a href="remove_system">
+                <div class="icon-div"><i class="fa fa-calendar-xmark"></i></div>
+                <span class="link_name">Remove System</span>
+            </a>
+            <span class="infotool">Remove System</span>
+        </li>
+        <li>
+            <a href="create_schedule">
+                <div class="icon-div"><i class="fa fa-calendar-plus"></i></div>
+                <span class="link_name">Create Schedule</span>
+            </a>
+            <span class="infotool">Create Schedule</span>
+        </li>
+        <li>
+            <a href="remove_from_schedule">
+                <div class="icon-div"><i class="fa fa-calendar-week"></i></div>
+                <span class="link_name">Remove from Schedule</span>
+            </a>
+            <span class="infotool">Remove from Schedule</span>
+        </li>
+        <li>
+            <a href="#">
+                <div class="icon-div"><i class="fa-solid fa-user"></i></div>
+                <span class="link_name">User Account</span>
+            </a>
+            <span class="infotool">User Account</span>
+        </li>
+        <!-- <li class="profile">
+            <i class="fa fa-sign-out" id="log_out"></i>
+        </li> -->
     </ul>
+
+    <div class="logout">
+
+        <a href=""><i class="fa fa-sign-out" ></i></a>
+        
+    </div>
   </div>
   <section class="home-section">
-    <div class="text">Dashboard</div> -->
+    <div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            {% if category == 'error' %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error: </strong> {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% else %}
+                <div class="alert alert-success alter-dismissable fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
     
+    <div class="text">Remove From Schedule</div>
+
     <div class="form-container">
-      <h1 id="form-title">Remove From Schedule</h1>
 
       <form name="user-info" id="form-box" method="POST">
           <div class="info-box" id="info1">
@@ -88,26 +112,8 @@
 
           <input id="login-button" type="submit" value="Remove">
       </form>
-    </div> 
-
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-      {% for category, message in messages %}
-      {% if category == 'error' %}
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Error: </strong> {{ message }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      {% else %}
-      <div class="alert alert-success alter-dismissable fade show" role="alert">
-        {{ message }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      {% endif %}
-      {% endfor %}
-    {% endif %}
-    {% endwith %}
-  </section>
+    </div>
+  </section>  
 
   <script>
     window.onload = function () {

@@ -17,7 +17,7 @@
     <link href="{{ url_for('static',filename='styles/create_schedule-styles.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <!-- <div class="sidebar">
+    <div class="sidenavbar">
         <div class="logo_details">
             <div class="logo_name">Track Master</div>
             <i class="fa-solid fa-bars" id="btn"></i>
@@ -25,77 +25,83 @@
         <ul class="nav-list">
             <li>
                 <a href="/admin_home">
-                    <i class="fas fa-home"></i>
+                    <div class="icon-div"><i class="fas fa-home"></i></div>
                     <span class="link_name">Home</span>
                 </a>
-                <span class="tooltip">Home</span>
+                <span class="infotool">Home</span>
             </li>
             <li>
                 <a href="/create_system">
-                    <i class="fa fa-calendar"></i>
+                    <div class="icon-div"><i class="fa fa-calendar"></i></div>
                     <span class="link_name">Create System</span>
                 </a>
-                <span class="tooltip">Create System</span>
+                <span class="infotool">Create System</span>
             </li>
             <li>
                 <a href="remove_system">
-                    <i class="fa fa-calendar-xmark"></i>
+                    <div class="icon-div"><i class="fa fa-calendar-xmark"></i></div>
                     <span class="link_name">Remove System</span>
                 </a>
-                <span class="tooltip">Remove System</span>
+                <span class="infotool">Remove System</span>
             </li>
             <li>
                 <a href="create_schedule">
-                    <i class="fa fa-calendar-plus"></i>
+                    <div class="icon-div"><i class="fa fa-calendar-plus"></i></div>
                     <span class="link_name">Create Schedule</span>
                 </a>
-                <span class="tooltip">Create Schedule</span>
+                <span class="infotool">Create Schedule</span>
             </li>
             <li>
                 <a href="remove_from_schedule">
-                    <i class="fa fa-calendar-week"></i>
+                    <div class="icon-div"><i class="fa fa-calendar-week"></i></div>
                     <span class="link_name">Remove from Schedule</span>
                 </a>
-                <span class="tooltip">Remove from Schedule</span>
+                <span class="infotool">Remove from Schedule</span>
             </li>
             <li>
                 <a href="#">
-                    <i class="fa-solid fa-user"></i>
+                    <div class="icon-div"><i class="fa-solid fa-user"></i></div>
                     <span class="link_name">User Account</span>
                 </a>
-                <span class="tooltip">User Account</span>
+                <span class="infotool">User Account</span>
             </li>
-            <li class="profile">
+            <!-- <li class="profile">
                 <i class="fa fa-sign-out" id="log_out"></i>
-            </li>
+            </li> -->
         </ul>
+
+        <div class="logout">
+
+            <a href=""><i class="fa fa-sign-out" ></i></a>
+            
+        </div>
     </div>
+
     <section class="home-section">
-        <div class="text">Create System</div>
-
-    </section> -->
-
-    <div>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-            {% if category == 'error' %}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Error: </strong> {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% else %}
-                <div class="alert alert-success alter-dismissable fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+        <div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                {% if category == 'error' %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Error: </strong> {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% else %}
+                    <div class="alert alert-success alter-dismissable fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endif %}
+                {% endfor %}
             {% endif %}
-            {% endfor %}
-        {% endif %}
-        {% endwith %}
+            {% endwith %}
+        </div>
+        
+        <div class="text">Create Schedule</div>
 
         <div class="form-container">
-            <h1 id="form-title">Create Schedule</h1>
+            <!-- <h1 id="form-title">Create Schedule</h1> -->
 
             <form name="user-info" id="form-box" method="POST">
                 <div class="info-box" id="info1">
@@ -120,53 +126,34 @@
                 </textarea><br>
                 <input id="login-button" type="submit" value="Create">
             </form>
-
-            <!-- <form name="user-info" id="form-box" method="POST">
-                <div class="info-box" id="info1">
-                    <label for="user-info">System ID:</label><br>
-                    <input id="name" type="text" name="system-id" placeholder="GO Transit"><br>
-                </div>
-                <div class="info-box" id="info2">
-                    <label for="user-info">Departure Time:</label><br>
-                    <input id="name" type="text" name="system-id" placeholder="GO Transit"><br>
-                </div>
-                <div class="info-box" id="info3">
-                    <label for="user-info">Name of Train:</label><br>
-                    <input id="name" type="text" name="system-id" placeholder="GO Transit"><br>
-                </div>
-                <div class="info-box" id="info4">
-                    <label for="user-info">System ID:</label><br>
-                    <input id="name" type="text" name="system-id" placeholder="GO Transit"><br>
-                </div>
-                <input id="login-button" type="submit" value="Create">
-            </form> -->
         </div>
-    </div>
-    <!-- <script>
+    </section>
+
+    <script>
         window.onload = function () {
-            const sidebar = document.querySelector(".sidebar");
+            const sidenavbar = document.querySelector(".sidenavbar");
             const closeBtn = document.querySelector("#btn");
             const searchBtn = document.querySelector(".bx-search")
 
             closeBtn.addEventListener("click", function () {
-                sidebar.classList.toggle("open")
+                sidenavbar.classList.toggle("open")
                 menuBtnChange()
             })
 
             searchBtn.addEventListener("click", function () {
-                sidebar.classList.toggle("open")
+                sidenavbar.classList.toggle("open")
                 menuBtnChange()
             })
 
             function menuBtnChange() {
-                if (sidebar.classList.contains("open")) {
+                if (sidenavbar.classList.contains("open")) {
                     closeBtn.classList.replace("bx-menu", "bx-menu-alt-right")
                 } else {
                     closeBtn.classList.replace("bx-menu-alt-right", "bx-menu")
                 }
             }
         }
-    </script> -->
+    </script>
 
 </body>
 
