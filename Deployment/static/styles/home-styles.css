@@ -57,14 +57,18 @@ body {
 }
 
 .inner_main_menu ul li:nth-child(4),
-.inner_main_menu ul li:nth-child(5),
-.inner_main_menu ul li:nth-child(6) {
+.inner_main_menu ul li:nth-child(5) {
   background-color: none;
   padding-left: 0px;
-  padding-right: 30px;
+  padding-right: 70px;
   padding-top: 10px;
 
 }
+
+/* .inner_main_menu ul li:nth-child(5) {
+  padding-right: -30px;
+} */
+
 
 .inner_main_menu ul li a {
   color: white;
