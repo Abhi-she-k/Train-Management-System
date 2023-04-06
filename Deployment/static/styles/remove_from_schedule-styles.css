@@ -17,8 +17,6 @@
 
 body {
   min-height: 100vh;
-  background-color: var(--color-body);
-
 }
 
 .sidebar {
@@ -32,9 +30,11 @@ body {
   top: 0;
   left: 0;
 }
-/* .sidebar .nav-list {
+/* .sidebar .list-nav {
   background-color: blue;
+
 }  */
+
 .sidebar.open {
   width: 250px;
 }
@@ -88,7 +88,7 @@ body {
   text-align: center;
 }
 
-.sidebar .nav-list {
+.sidebar .list-nav {
   margin-top: 20px;
   height: 100%;
 }
@@ -292,14 +292,6 @@ body {
 
 }
 
-.home-section #greeting{
+.home-section .form-container{
   margin: 18px;
-}
-
-.home-section #account-info{
-  margin: 18px;
-}
-
-.home-section #schedules{
-  margin: 250px;
 }

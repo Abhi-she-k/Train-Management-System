@@ -32,6 +32,29 @@
     </form>
   </div>
 
+  {% for time in times %}
+    <h2>{{ time[0] }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Schedule</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in time[1].items() %}
+                <tr>
+                    <td>{{ key }}</td>
+                    <td>{{ value }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>{{ time[3] }} to {{ time[4] }} takes {{ time[2] }} mins, {{ time[5] }} - {{ time[6] }}</p>
+  {% endfor %}
+
+
+
 </body>
 
 </html>

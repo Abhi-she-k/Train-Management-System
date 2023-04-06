@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>Track Master | Remove System</title>
+    <link rel="shortcut icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
+    <link rel="apple-touch-icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
+    <link href="{{ url_for('static',filename='styles/remove_system-styles.css') }}" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></head>
+<body>
+    <!-- <div class="sidebar">
+        <div class="logo_details">
+            <div class="logo_name">Track Master</div>
+            <i class="fa-solid fa-bars" id="btn"></i>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <a href="/admin_home">
+                    <i class="fas fa-home"></i>
+                    <span class="link_name">Home</span>
+                </a>
+                <span class="tooltip">Home</span>
+            </li>
+            <li>
+                <a href="/create_system">
+                    <i class="fa fa-calendar"></i>
+                    <span class="link_name">Create System</span>
+                </a>
+                <span class="tooltip">Create System</span>
+            </li>
+            <li>
+                <a href="remove_system">
+                    <i class="fa fa-calendar-xmark"></i>
+                    <span class="link_name">Remove System</span>
+                </a>
+                <span class="tooltip">Remove System</span>
+            </li>
+            <li>
+                <a href="create_schedule">
+                    <i class="fa fa-calendar-plus"></i>
+                    <span class="link_name">Create Schedule</span>
+                </a>
+                <span class="tooltip">Create Schedule</span>
+            </li>
+            <li>
+                <a href="remove_from_schedule">
+                    <i class="fa fa-calendar-week"></i>
+                    <span class="link_name">Remove from Schedule</span>
+                </a>
+                <span class="tooltip">Remove from Schedule</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="link_name">User Account</span>
+                </a>
+                <span class="tooltip">User Account</span>
+            </li>
+            <li class="profile">
+                <i class="fa fa-sign-out" id="log_out"></i>
+            </li>
+        </ul>
+    </div>
+    <section class="home-section">
+        <div class="text">Create System</div>
+
+    </section> -->
+
+    <div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            {% if category == 'error' %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error: </strong> {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% else %}
+                <div class="alert alert-success alter-dismissable fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <div class="form-container">
+            <h1 id="form-title">Remove a System</h1>
+
+            <form name="user-info" id="form-box" method="POST">
+                <div class="info-box" id="info1">
+                    <label for="user-info">System ID:</label><br>
+                    <input id="name" type="text" name="system-id" placeholder="GO Transit"><br>
+                </div>
+
+                <input id="login-button" type="submit" value="Remove">
+            </form>
+        </div>
+    </div>
+    <!-- <script>
+        window.onload = function () {
+            const sidebar = document.querySelector(".sidebar");
+            const closeBtn = document.querySelector("#btn");
+            const searchBtn = document.querySelector(".bx-search")
+
+            closeBtn.addEventListener("click", function () {
+                sidebar.classList.toggle("open")
+                menuBtnChange()
+            })
+
+            searchBtn.addEventListener("click", function () {
+                sidebar.classList.toggle("open")
+                menuBtnChange()
+            })
+
+            function menuBtnChange() {
+                if (sidebar.classList.contains("open")) {
+                    closeBtn.classList.replace("bx-menu", "bx-menu-alt-right")
+                } else {
+                    closeBtn.classList.replace("bx-menu-alt-right", "bx-menu")
+                }
+            }
+        }
+    </script> -->
+
+</body>
+
+</html>

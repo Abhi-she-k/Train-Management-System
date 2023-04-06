@@ -9,11 +9,134 @@
   <title>Track Master | Contact</title>
   <link rel="shortcut icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
   <link rel="apple-touch-icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
-  <link href="{{ url_for('static',filename='styles/maps-styles.css') }}" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="{{ url_for('static',filename='styles/contact-styles.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-    
+  <div id="backdrop">
+    <div class="card" id="card1">
+      <div class="banner">
+        <div class="avatar"></div>
+      </div>
+      <h3>Sufyan Ghani</h3>
+      <a>Front End Dev</a>
+      <ul>
+        <a href="https://www.linkedin.com/in/sufyan-ghani1/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/SufyanG20" target="_blank"><i class="fa-brands fa-github"></i></a>
+      </ul>
+    </div>
+    <div class="card" id="card2">
+      <div class="banner">
+        <div class="avatar"></div>
+      </div>
+      <h3>Abhishek Paul</h3>
+      <a href="">Full Stack Dev</a>
+      <ul>
+        <a href="https://www.linkedin.com/in/abhi311/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/Abhi-she-k" target="_blank"><i class="fa-brands fa-github"></i></a>
+      </ul>
+    </div>
+    <div class="card" id="card3">
+      <div class="banner">
+        <div class="avatar"></div>
+      </div>
+      <h3>Diego Diaz</h3>
+      <a href="">Backend Dev</a>
+      <ul>
+        <a href="https://www.linkedin.com/in/diegodiaz2205/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/towel-cool" target="_blank"><i class="fa-brands fa-github"></i></a>
+      </ul>
+    </div>
+    <div class="card" id="card4">
+      <div class="banner">
+        <div class="avatar"></div>
+      </div>
+      <h3>Shahrukh Saeed</h3>
+      <a href="">Backend Dev</a>
+      <ul>
+        <a href="https://www.linkedin.com/in/shahrukh-saeed/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/shahrukh-saeed" target="_blank"><i class="fa-brands fa-github"></i></a>
+      </ul>
+    </div>
+    <div class="card" id="card5">
+      <div class="banner">
+        <div class="avatar"></div>
+      </div>
+      <h3>Nathan Chan</h3>
+      <a href="">QA Engineer</a>
+      <ul>
+        <a href="https://www.linkedin.com/in/nathanl-chan/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/NatlC" target="_blank"><i class="fa-brands fa-github"></i></a>
+      </ul>
+    </div>
+    <div class="card" id="card6">
+      <div class="banner">
+        <div class="avatar"></div>
+      </div>
+      <h3>Shakeer Nawaz</h3>
+      <a href="">QA/Test Engineer</a>
+      <ul>
+        <a href="https://www.linkedin.com/in/shakeer-nawaz/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/shakeern" target="_blank"><i class="fa-brands fa-github"></i></a>
+      </ul>
+    </div>
+  </div>
+
+  </div>
+
+  <div id="block">
+    <h1 class=""></h1>
+  </div>
+
+  <footer>
+    <div id="footer">
+      <div id="socials">
+        <a href=""><i class="fa-brands fa-twitter"></i></a>
+        <a href=""><i class="fa-brands fa-facebook"></i></a>
+        <a href=""><i class="fa-brands fa-instagram"></i></a>
+        <a href=""><i class="fa-brands fa-youtube"></i></a>
+      </div>
+      <div id="links">
+        <ul>
+          <li><a href="#">Accessibility</a></li>
+          <li> | </li>
+          <li><a href="#">Privacy</a></li>
+          <li> | </li>
+          <li><a href="#">Terms & Conditions</a></li>
+      </div>
+
+      <h5 id="copyright">Copyright &copy; 2023, Track Master. All Rights Reserved</h5>
+
+    </div>
+  </footer>
+
+
+  <div id="main_menu">
+    <div id="nav-back">
+      <div class="logo_area">
+        <a><img id="homepage-logo" src="{{ url_for('static',filename='images/train_logo.png') }}" alt=""></a>
+      </div>
+
+      <div id="test" class="inner_main_menu">
+        <ul id="menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a style="pointer-events: none; cursor: default;" href="">Trains</a>
+            <ul>
+              <li><a href="/find_route">Trip Planner</a></li>
+              <li><a href="/eta">ETA</a></li>
+              <li><a href="/eta">Schedules</a></li>
+            </ul>
+          </li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/schedules">Schedules</a></li>
+          <li><a href="/faq">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>

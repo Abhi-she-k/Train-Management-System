@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-* {
+*{
   margin: 0;
   padding: 0;
   list-style: none;
@@ -8,19 +8,9 @@
   font-family: 'Poppins', sans-serif;
 }
 
-#main.title {
-  background-color: black;
-}
-
-#home-title {
-  color: black;
-  text-align: center;
-  vertical-align: middle;
-  padding: 100px;
-}
-
 body {
   background-color: #e4e9f7;
+
 }
 
 .inner_main_menu {
@@ -146,7 +136,6 @@ body {
   background-color: black;
   height: 50px;
   width: 70%;
-
   text-align: center;
   margin-top: 60px;
   margin-left: 15%;
@@ -172,53 +161,9 @@ body {
   text-align: center;
 }
 
-/* #nav-back {
-  height: 100px;
 
-} */
-
-#welcome {
-  position: fixed;
-  margin: 10% 0 0 16%;
-  z-index: 2;
-  color: black;
-  background-color: black;
-  padding: 0 1% 0 1%;
-  /* padding-left: 1%;
-  padding-right: 1%; */
-
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, .15);
-
-  backdrop-filter: blur(5px);
-}
-
-#train {
-  position: fixed;
-  z-index: -2;
-  margin: 7% 0 0 15%;
-}
-
-#train img {
-  width: 1075px;
-  height: 530px;
-}
-
-#welcome h1 {
-  color: #fff;
-  margin: 0 auto;
-}
-
-#login {
-  position: fixed;
-  z-index: 2;
-  color: black;
-  margin-left: 82%;
-}
-
-#login a {
-  text-decoration: underline;
+#backdrop p {
+  margin-top: 200px;
 
 }
 
@@ -227,8 +172,8 @@ body {
   background-color: black;
   color: gray;
   margin: 41% 0 0 15%;
-  height: 99px;
-  width: 1075px;
+  height: 30%;
+  width: 70%;
   text-align: center;
 
 }
@@ -250,18 +195,18 @@ body {
 }
 
 #socials a{
-  padding:0% 1% 0% 1%;
+  padding:1% 1% 0% 1%;
 }
 
 #socials {
   padding:0.5% 0% 0% 0%;
 }
 
-#links {
-  padding:0% 0% 0.5% 0%;
-}
-
 #links ul li a{
   padding-left:5px;
   padding-right:5px;
+}
+
+#copyright {
+  font-size:15px;
 }

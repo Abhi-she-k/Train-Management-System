@@ -62,4 +62,7 @@ class train():
       
     def getName(self):
       return self.name
+    
+    def getTimes(self):
+      return self.times
       

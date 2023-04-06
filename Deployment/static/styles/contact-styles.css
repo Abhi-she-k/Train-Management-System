@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #e4e9f7;
+
+}
+
+.inner_main_menu {
+    margin: 0 auto;
+    width: 1170px;
+}
+
+.inner_main_menu ul {
+    margin: 0;
+    padding: 60px 20px 40px 80px;
+    list-style: none;
+    text-align: right;
+}
+
+.inner_main_menu ul li {
+    float: none;
+    display: inline-block;
+    position: relative;
+}
+
+.inner_main_menu ul li:nth-child(1),
+.inner_main_menu ul li:nth-child(2),
+.inner_main_menu ul li:nth-child(3) {
+    float: left;
+    background-color: none;
+    padding-right: 38px;
+    padding-top: 10px;
+}
+
+.inner_main_menu ul li:nth-child(3) {
+    padding-right: 0px;
+}
+
+.inner_main_menu ul li:nth-child(4),
+.inner_main_menu ul li:nth-child(5),
+.inner_main_menu ul li:nth-child(6) {
+    background-color: none;
+    padding-left: 0px;
+    padding-right: 30px;
+    padding-top: 10px;
+}
+
+.inner_main_menu ul li a {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    padding: 0px 20px;
+}
+
+.inner_main_menu ul li a:hover {
+    color: #13818D;
+}
+
+.inner_main_menu ul li ul {
+    display: none;
+    position: absolute;
+    top: 45px;
+    left: -9999999px;
+    width: 130px;
+    padding: 0px;
+    background: black;
+    z-index: 5;
+}
+
+.inner_main_menu ul li:hover ul {
+    display: inline-block;
+    left: 0px;
+    text-align: left;
+    color: #13818D;
+}
+
+.inner_main_menu ul li ul li a {
+    color: white;
+    text-transform: capitalize;
+    font-size: 15px;
+    background-color: black;
+    margin-right: 0;
+    margin-top: 0;
+}
+
+.inner_main_menu ul li:hover a {
+    color: #13818D;
+}
+
+.inner_main_menu ul li:hover ul li a {
+    color: white;
+}
+
+.inner_main_menu ul li ul li a:hover {
+    color: #13818D;
+}
+
+.logo_area {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    content: "";
+    margin-left: -150px;
+    text-align: center;
+}
+
+#homepage-logo {
+    width: 150px;
+    height: 150px;
+    background-color: black;
+    border-radius: 50%;
+    overflow: hidden;
+    transform-origin: center;
+    transition: transform 0s ease-in-out;
+}
+
+#block {
+    position: fixed;
+    z-index: -1;
+    background-color: black;
+    height: 50px;
+    width: 70%;
+    text-align: center;
+    margin-top: 60px;
+    margin-left: 15%;
+}
+
+#backdrop {
+    position: fixed;
+    z-index: -2;
+    background-color: white;
+    height: 100%;
+    width: 70%;
+    margin-left: 15%;
+    box-shadow: 0 15px 25px
+}
+
+#main_menu {
+    position: relative;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 500px;
+    text-align: center;
+}
+
+#backdrop p {
+    margin-top: 200px;
+}
+
+#footer {
+    position: fixed;
+    background-color: black;
+    color: gray;
+    margin: 41% 0 0 15%;
+    height: 30%;
+    width: 70%;
+    text-align: center;
+}
+
+#links ul li {
+    display: inline-block;
+    text-decoration: none;
+    color: gray;
+}
+
+#links ul li a,
+#socials a {
+    text-decoration: none;
+    color: gray;
+}
+
+#links ul li a:hover,
+#socials a:hover {
+    color: white;
+}
+
+#socials a {
+    padding: 1% 1% 0% 1%;
+}
+
+#socials {
+    padding: 0.5% 0% 0% 0%;
+}
+
+#links ul li a {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#copyright {
+    font-size: 15px;
+}
+
+.card {
+    width: 160px;
+    overflow: hidden;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.card:first-of-type {
+    margin-right: 25px;
+}
+
+#backdrop #card1 {
+    margin: 30% 0px 0px 1%;
+}
+
+#backdrop #card2 {
+    margin: -22% 0px 0px 18%;
+}
+
+#backdrop #card3 {
+    margin: -22% 0px 0px 35%;
+}
+
+#backdrop #card4 {
+    margin: -22% 0px 0px 52%;
+}
+
+#backdrop #card5 {
+    margin: -22% 0px 0px 68%;
+}
+
+#backdrop #card6 {
+    margin: -22% 0px 0px 84%;
+}
+
+.banner {
+    height: 100px;
+    width: 100%;
+    padding-top: 10px;
+    background-color: white;
+    background-size: cover;
+    background-position: center;
+}
+
+#card1 .banner {
+    background-color: lightsalmon;
+}
+
+#card2 .banner {
+    background-color: lightblue;
+}
+
+#card3 .banner {
+    background-color: lightgreen;
+}
+
+#card4 .banner {
+    background-color: lightcoral;
+}
+
+#card5 .banner {
+    background-color: plum;
+}
+
+#card6 .banner {
+    background-color: gold;
+}
+
+.avatar {
+    height: 100px;
+    width: 100px;
+    margin: auto;
+    background-size: cover;
+    background-position: center;
+    background-color: whitesmoke;
+    border-radius: 100%;
+}
+
+#card1 .avatar {
+    background-image: url("/static/images/sufyan.jpeg");
+}
+
+#card2 .avatar {
+    background-image: url("/static/images/abhishek.jpg");
+}
+
+#card3 .avatar {
+    background-image: url("/static/images/diego.jpg");
+}
+
+#card4 .avatar {
+    background-image: url("/static/images/shahrukh.jpg");
+}
+
+#card5 .avatar {
+    background-image: url("/static/images/nathan.jpg");
+}
+
+#card6 .avatar {
+    background-image: url("/static/images/shakeer.PNG");
+}
+
+.card h3 {
+    margin: 10px 0px 5px 0px;
+}
+
+.card a {
+    display: block;
+    font-size: 14px;
+    color: grey;
+}
+
+.card ul {
+    margin-top: 10px;
+    padding: 15px 0px;
+    background-color: whitesmoke;
+}
+
+.card ul a {
+    display: inline;
+    margin-right: 10px;
+}
+
+.card ul a:hover {
+    color: red;
+}

@@ -17,8 +17,6 @@
 
 body {
   min-height: 100vh;
-  background-color: var(--color-body);
-
 }
 
 .sidebar {
@@ -32,9 +30,7 @@ body {
   top: 0;
   left: 0;
 }
-/* .sidebar .nav-list {
-  background-color: blue;
-}  */
+
 .sidebar.open {
   width: 250px;
 }
@@ -294,12 +290,4 @@ body {
 
 .home-section #greeting{
   margin: 18px;
-}
-
-.home-section #account-info{
-  margin: 18px;
-}
-
-.home-section #schedules{
-  margin: 250px;
 }

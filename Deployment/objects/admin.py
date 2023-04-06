@@ -1,9 +1,9 @@
-from user import *
-from trainSchedule import *
+from objects.user import user
+from objects.trainSchedule import trainSchedule
 # from user import user
 # from trainSchedule import trainSchedule
 import json
-path = '/Users/abhishekpaul/Desktop/CPS406/Train-Management-System/Deployment/objects/adminInfo.json'
+path = 'objects/adminInfo.json'
 
 class admin(user):
     def __init__(self, firstName, lastName, userType, userId):
@@ -45,11 +45,53 @@ class admin(user):
     def logout(self):
       self.loggedIn = False
 
-    def changeUsername(self, newUser):
-      self.userName = newUser
+    def changeUsername(self, oldUser, password, newUser):
+      data = None
+      userFound = False
+      with open(path, 'r') as f:
+        data = json.load(f)
+      # Check if new username already exists
+      for admins in data["admins"]:
+        # Check for valid password
+        if admins["username"] == oldUser:
+          userFound = True
+          if password != admins["password"]:
+            return 1
+        # Check if new username exists
+        if admins["username"] == newUser:
+          return 2
+      # Change old username to new username
+      if not userFound:
+        return 3
+      for i in range(len(data["admins"])):
+        if data["admins"][i]["username"] == oldUser:
+          data["admins"][i]["username"] = newUser
 
-    def changePassword(self, userName, newPassword):
-      self.password = newPassword
+      with open(path, 'w') as f:
+        json.dump(data, f, indent=4)
+      return 0
+
+    def changePassword(self, userName, oldpass, newPassword):
+      data = None
+      userFound = False
+      with open(path, 'r') as f:
+        data = json.load(f)
+      # Check if user exists and valid password
+      for admins in data["admins"]:
+        if admins["username"] == userName:
+          userFound = True
+          if admins["password"] != oldpass:
+            return 1
+      if not userFound:
+        return 2
+      # Change old password to new password
+      for i in range(len(data["admins"])):
+        if data["admins"][i]["username"] == userName:
+          data["admins"][i]["password"] = newPassword
+      
+      with open(path, 'w') as f:
+        json.dump(data, f, indent=4)
+      return 0
 
     def createSchedule(self, scheduleID):
       newSchedule = trainSchedule(scheduleID)
