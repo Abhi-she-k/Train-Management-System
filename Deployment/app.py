@@ -49,7 +49,7 @@ def home_page():
     return render_template('home.html')
 
 @app.route('/login', methods=['GET', 'POST'])
-def req_login():
+def login():
     numSystems = len(systemObjects)
 
     if request.method == 'POST':
@@ -66,7 +66,7 @@ def req_login():
                 for j in i.getTrains():
                     stations[j.getName()] = j.getSchedules()
                 info[i.getScheduleId()] = stations
-
+            
             return render_template('admin_home.html', user=username, password=password, systems=numSystems, info=info)
         else:
             flash('Invalid Information', category='error')
@@ -100,6 +100,12 @@ def sign_up():
                 flash('Unable to create account', category='error')
 
     return render_template('signup.html')
+
+@app.route('/logout')
+def logout():
+    curAdmin.logout()
+    flash('Logged out successfully', category='success')
+    return redirect(url_for('login'))
 
 @app.route('/about')
 def about():
@@ -174,6 +180,8 @@ def eta():
 @app.route('/create_system', methods=['GET', 'POST'])
 def create_system():
 
+    if not curAdmin.getLoggedIn():
+        return redirect(url_for('home_page'))
     if request.method == 'POST':    
         scheduleID = request.form.get('system-id')
 
@@ -199,6 +207,8 @@ def create_system():
 
 @app.route('/remove_system', methods=['GET', 'POST'])
 def remove_system():
+    if not curAdmin.getLoggedIn():
+        return redirect(url_for('home_page'))
     if request.method == 'POST':    
         systemID = request.form.get('system-id')
         sysExists = False
@@ -218,6 +228,9 @@ def remove_system():
 
 @app.route('/create_schedule', methods=['GET', 'POST'])
 def create_schedule():
+    if not curAdmin.getLoggedIn():
+        return redirect(url_for('home_page'))
+
     arr = []
     valid_sys = False
 
@@ -272,6 +285,9 @@ def create_schedule():
 @app.route('/remove_from_schedule', methods=['GET', 'POST'])
 def remove_from_schedule():
 
+    if not curAdmin.getLoggedIn():
+        return redirect(url_for('home_page'))
+
     if request.method == 'POST':    
         trainId = request.form.get('train-id')
         trainExists = False
@@ -295,6 +311,9 @@ def remove_from_schedule():
 
 @app.route('/admin_home', methods=['POST'])
 def admin_home():
+    if not curAdmin.getLoggedIn():
+        return redirect(url_for('home_page'))
+
     info = {}
     username = ""
     print("admin home")
@@ -313,6 +332,9 @@ def admin_home():
 
 @app.route('/change_username', methods=['GET', 'POST'])
 def change_username():
+
+    if not curAdmin.getLoggedIn():
+        return redirect(url_for('home_page'))
 
     print("change username function")
     if request.method == 'POST':    
@@ -336,6 +358,9 @@ def change_username():
 
 @app.route('/change_password', methods=['GET', 'POST'])
 def change_password():
+
+    if not curAdmin.getLoggedIn():
+        return redirect(url_for('home_page'))
 
     if request.method == 'POST':    
         userName = request.form.get('user-name')

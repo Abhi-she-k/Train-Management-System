@@ -107,4 +107,9 @@ class admin(user):
       trainSchedule =  self.trainSystems[scheduleID]       
       trainSchedule.removeTrain(train)
       print("Train removed")
-      
+    
+    def logOut(self):
+      self.loggedIn = False
+
+    def getLoggedIn(self):
+      return self.loggedIn
