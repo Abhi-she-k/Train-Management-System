@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-*{
+* {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -9,46 +9,76 @@
 }
 
 body {
-  background-color: #CDD6DC;
+  background-color: #E4E9F7;
   margin: 0;
   padding: 0;
 }
 
-.form-container {
-    position: absolute;
-    top: 25%;
-    right: 35%;
-    background: white;
-    width: 500px;
-    border-radius: 10px;
-    box-shadow: 0 15px 25px
-  }
-  
-  #form-title {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .info-box {
-    margin: 20px;
-    text-align: left;
-  }
-  
-  #submit-button {
-    text-align: center;
-    margin-left: 20px;
-    margin-bottom: 10px;
-  }
+.container {
+  margin-top: 6%;
+  background: white;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 15px 25px;
+}
 
-  #login-button {
-    margin-left: 20px; 
-  }
+#title {
+  padding-top: 20px;
+}
 
-  #info{
-    text-align: center;
-  }
-#register{
-  margin-left: 20px; 
-  margin-top: 20px;
-  margin-top: 10px;
+#form-title {
+  text-align: center;
+  font-weight: bold;
+  color: #13818D;
+}
+
+.info-box {
+  margin: 20px;
+  text-align: left;
+}
+
+.info-box input {
+  width: 100%;
+  height: 40px;
+}
+
+#submit-button {
+  text-align: center;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+#login-button {
+  margin-left: 20px;
+}
+
+#info {
+  text-align: center;
+}
+
+#register {
+  margin: 15px 0px 0px 20px;
+  padding-bottom: 20px;
+}
+
+#register a {
+  color: #13818D;
+}
+
+#login-button {
+  background-color: #13818D;
+  color: white;
+  border-radius: 5px;
+  height: 35px;
+  width: 86%;
+  border-color: #13818D;
+}
+
+#home-button {
+  margin-top:5px;
+  margin-left:5px;
+}
+
+#home-button a i{
+  color: black;
 }
