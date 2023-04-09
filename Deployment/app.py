@@ -1,8 +1,7 @@
-
 import json
 # move into app.py directory using cd and run app.py (flask run) in the terminal test
 from flask import Flask, render_template, request, redirect, url_for, flash
-from datetime import datetime, timedelta
+from datetime import datetime
 
 from objects.route import route
 from objects.station import station
@@ -18,6 +17,8 @@ curAdmin = admin(None, None, None, None)
 systemObjects = []
 pathTrainSchedule = 'objects/trainSchedule.json'
 pathAdminInfo = 'objects/adminInfo.json'
+global user_name
+global user_pass
 
 def createObjects():
   with open('objects/trainSchedule.json', 'r') as f:
@@ -44,8 +45,12 @@ def createObjects():
 
 createObjects()
 
+# @app.route('/<invalid_url>')
+# def invalid_url(invalid_url):
+#     return redirect(url_for('home'))
+    
 @app.route('/')
-def home_page():
+def home():
     return render_template('home.html')
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -54,19 +59,24 @@ def login():
 
     if request.method == 'POST':
         
-        username = request.form.get('user-name')
-        password = request.form.get('user-password')
+        username = request.form.get('user-name').strip()
+        password = request.form.get('user-password').strip()
 
         valid = curAdmin.login(username,password)
         if valid:
+            global user_name 
+            user_name = username
+            global user_pass 
+            user_pass = password
+
             info = {}
-    
             for i in systemObjects:
                 stations = {}
                 for j in i.getTrains():
                     stations[j.getName()] = j.getSchedules()
                 info[i.getScheduleId()] = stations
-            
+
+            #return render_template('admin_home.html')
             return render_template('admin_home.html', user=username, password=password, systems=numSystems, info=info)
         else:
             flash('Invalid Information', category='error')
@@ -76,10 +86,10 @@ def login():
 @app.route('/signup', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
-        username = request.form.get('user-name')
-        password1 = request.form.get('user-password1')
-        password2 = request.form.get('user-password2')
-        userkey = request.form.get('user-key')
+        username = request.form.get('user-name').strip()
+        password1 = request.form.get('user-password1').strip()
+        password2 = request.form.get('user-password2').strip()
+        userkey = request.form.get('user-key').strip()
 
         if len(password1) < 6:
             flash('Password must be at least 6 characters long', category='error')
@@ -124,18 +134,18 @@ def route1():
     info = {}
 
     if request.method == 'POST':
-        startStation = request.form.get('start-station')
-        endStation = request.form.get('end-station')
+        startStation = request.form.get('start-station').strip()
+        endStation = request.form.get('end-station').strip()
         stations = []
         for i in systemObjects:
-            x = (i.findRoute(startStation.strip(), endStation.strip()))
+            x = (i.findRoute(startStation, endStation))
             if x != []:
                 stations.append(x)
 
         for i in stations:
             for j in i:
                 info[j.getName()] = j.getSchedules()
-        return render_template('find_route.html', info=info)
+        #return render_template('find_route.html', info=info)
     
     return render_template('find_route.html', info=info)
 
@@ -154,36 +164,36 @@ def schedules():
 
 @app.route('/eta', methods=['GET', 'POST'])
 def eta():
+    times = []
     if request.method == 'POST':    
-        startStation = request.form.get('start-station')
-        endStation = request.form.get('end-station')
+        startStation = request.form.get('start-station').strip()
+        endStation = request.form.get('end-station').strip()
     
-        times = []
         trains = []
         for i in systemObjects:
-            r = (i.findRoute(startStation.strip(), endStation.strip()))
+            r = (i.findRoute(startStation, endStation))
             if r != []:
                 trains.append(r)
         
         for i in trains:
             for j in i:
-                estTime = j.calculateTrip(startStation.strip(), endStation.strip())
-                startTime = j.getSchedules().get(startStation.strip())
-                endTime = j.getSchedules().get(endStation.strip())
+                estTime = j.calculateTrip(startStation, endStation)
+                startTime = j.getSchedules().get(startStation)
+                endTime = j.getSchedules().get(endStation)
 
                 times.append([j.getName(), j.getSchedules(), estTime, startStation, endStation, startTime, endTime])
         
-        return render_template('eta.html', times=times)
+        #return render_template('eta.html', times=times)
 
-    return render_template('eta.html')
+    return render_template('eta.html', times=times)
 
 @app.route('/create_system', methods=['GET', 'POST'])
 def create_system():
 
     if not curAdmin.getLoggedIn():
-        return redirect(url_for('home_page'))
+        return redirect(url_for('home'))
     if request.method == 'POST':    
-        scheduleID = request.form.get('system-id')
+        scheduleID = request.form.get('system-id').strip()
 
         newSystem = trainSchedule(scheduleID)
         systemObjects.append(newSystem)
@@ -208,9 +218,9 @@ def create_system():
 @app.route('/remove_system', methods=['GET', 'POST'])
 def remove_system():
     if not curAdmin.getLoggedIn():
-        return redirect(url_for('home_page'))
+        return redirect(url_for('home'))
     if request.method == 'POST':    
-        systemID = request.form.get('system-id')
+        systemID = request.form.get('system-id').strip()
         sysExists = False
         sys = None
         for i in systemObjects:
@@ -229,56 +239,56 @@ def remove_system():
 @app.route('/create_schedule', methods=['GET', 'POST'])
 def create_schedule():
     if not curAdmin.getLoggedIn():
-        return redirect(url_for('home_page'))
+        return redirect(url_for('home'))
 
     arr = []
     valid_sys = False
 
     if request.method == 'POST':    
-        systemID = request.form.get('system-id')
-        departTime = request.form.get('depart-time')
-        trainName = request.form.get('train-name')
-        stations = request.form.get('stations')
-        timeBetweenStat = request.form.get('time-between-stations')
+        systemID = request.form.get('system-id').strip()
+        departTime = request.form.get('depart-time').strip()
+        trainName = request.form.get('train-name').strip()
+        stations = request.form.get('stations').strip()
+        timeBetweenStat = request.form.get('time-between-stations').strip()
 
         for i in systemObjects:
-          if(i.scheduleId == systemID.strip()):
+          if(i.scheduleId == systemID):
             sys = i
             valid_sys = True
         # Checking to see if the system is valid
         if(valid_sys == False):
             flash('Not a valid system', category='error')
         # Checking to see if the departTime is valid
-        if not datetime.strptime(departTime, '%H:%M'):
-            flash('Invalid departure time. Time must in in format 09:45', category='error')
-        #Checking to see if stations input is valid
-        stats = stations.strip().split('\r\n')
-        final_stats = [string.strip() for string in stats if string.strip()]
-        if not all(isinstance(elem, str) for elem in final_stats):
-            flash('Invalid Station Input. Stations can only contain strings', category='error')
-        if not all(len(elem) <= 20 for elem in final_stats):
-            flash('Invalid Station Input.', category='error')
-        #Checking to see if time between stations input is valid
-        times = timeBetweenStat.strip().split('\r\n')
-        final_times = [string.strip() for string in times if string.strip()]
-        if not all(elem.isdigit() for elem in final_times):
-            flash('Invalid Time Input', category='error')
-        if not all(len(elem) < 3 for elem in final_times):
-            flash('Invalid Time Input.', category='error')
-        #Checking to see if user input the correct number of station and times
-        if(len(final_times) != (len(final_stats) - 1) ):
-            flash('Times do not match', category='error')
-        
-        timeBet = [int(elem) for elem in final_times]
+        else:
+            if not datetime.strptime(departTime, '%H:%M'):
+                flash('Invalid departure time. Time must in in format 09:45', category='error')
+            #Checking to see if stations input is valid
+            stats = stations.strip().split('\r\n')
+            final_stats = [string.strip() for string in stats if string.strip()]
+            if not all(isinstance(elem, str) for elem in final_stats):
+                flash('Invalid Station Input. Stations can only contain strings', category='error')
+            if not all(len(elem) <= 20 for elem in final_stats):
+                flash('Invalid Station Input.', category='error')
+            #Checking to see if time between stations input is valid
+            times = timeBetweenStat.strip().split('\r\n')
+            final_times = [string.strip() for string in times if string.strip()]
+            if not all(elem.isdigit() for elem in final_times):
+                flash('Invalid Time Input', category='error')
+            if not all(len(elem) < 3 for elem in final_times):
+                flash('Invalid Time Input.', category='error')
+            #Checking to see if user input the correct number of station and times
+            if(len(final_times) != (len(final_stats) - 1) ):
+                flash('Times do not match', category='error')
+            
+            timeBet = [int(elem) for elem in final_times]
 
-        newRoute = route()
-        for i in range(len(final_stats)):
-          newRoute.addStation(station(i, final_stats[i]))  
-        newTrain = train(trainName.strip(), newRoute, timeBet, departTime)
-        sys.addTrains(newTrain)
-        sys.viewTrainSchedule()
-        print("Train added")
-        flash('Train added successfully', category='success')    
+            newRoute = route()
+            for i in range(len(final_stats)):
+                newRoute.addStation(station(i, final_stats[i]))  
+            newTrain = train(trainName, newRoute, timeBet, departTime)
+            sys.addTrains(newTrain)
+            sys.viewTrainSchedule()
+            flash('Train added successfully', category='success')    
 
     return render_template('create_schedule.html')
 
@@ -286,10 +296,10 @@ def create_schedule():
 def remove_from_schedule():
 
     if not curAdmin.getLoggedIn():
-        return redirect(url_for('home_page'))
+        return redirect(url_for('home'))
 
     if request.method == 'POST':    
-        trainId = request.form.get('train-id')
+        trainId = request.form.get('train-id').strip()
         trainExists = False
         t = None
         sys = None
@@ -309,50 +319,55 @@ def remove_from_schedule():
 
     return render_template('remove_from_schedule.html')
 
-@app.route('/admin_home', methods=['POST'])
+@app.route('/admin_home', methods=['GET', 'POST'])
 def admin_home():
     if not curAdmin.getLoggedIn():
-        return redirect(url_for('home_page'))
+        return redirect(url_for('home'))
 
-    info = {}
-    username = ""
-    print("admin home")
+    # info = {}
+    # username = ""
     if request.method == 'POST':
-        print("POST")
         if request.form['submit_button'] == 'Change Username':
-            print("change user")
-            return render_template('change_username.html')
+            return redirect(url_for('change_username'))
         elif request.form['submit_button'] == 'Change Password':
-            print("change pass")
-            return render_template('change_password.html')
+            return redirect(url_for('change_password'))
+        elif request.form['submit_button'] == 'View Schedules':
+            return redirect(url_for('schedules'))
         else:
-            pass # unknown
+            pass
+    info = {}
+    numSystems = len(systemObjects)
+    for i in systemObjects:
+        stations = {}
+        for j in i.getTrains():
+            stations[j.getName()] = j.getSchedules()
+        info[i.getScheduleId()] = stations
 
-    return render_template('admin_home.html', user=username, info=info)
+    return render_template('admin_home.html', user=user_name, password=user_pass, systems=numSystems, info=info)
 
 @app.route('/change_username', methods=['GET', 'POST'])
 def change_username():
 
     if not curAdmin.getLoggedIn():
-        return redirect(url_for('home_page'))
+        return redirect(url_for('home'))
 
-    print("change username function")
-    if request.method == 'POST':    
-        userName = request.form.get('user-name')
-        password = request.form.get('user-password')
-        newUserName = request.form.get('user-newName')
+    if request.method == 'POST':
+        username = request.form.get('user-name').strip()
+        password = request.form.get('user-password').strip()
+        newUserName = request.form.get('user-newName').strip()
 
-        print("changing username")
         valid = curAdmin.changeUsername(username,password,newUserName)
-        if valid:
-            print("changed")
-            flash('Username changed successfully', category='success')
-            return render_template('change_username.html')
-            #return render_template('change_username.html'), {"Refresh": "3; url=/home"}
+        if valid == 0:
+            flash('Username changed successfully. Returning to dashboard in 3 seconds...', category='success')
+            return render_template('change_password.html'), {"Refresh": "3; url=/admin_home"}
+        elif valid == 1:
+            flash('Incorrect Password', category='error')
+        elif valid == 2:
+            flash('Username already exists', category='error')
+        elif valid == 3:
+            flash('Username not found', category='error')
         else:
-            print("error")
             flash('Invalid Information', category='error')
-            return render_template('change_username.html')
 
     return render_template('change_username.html')
 
@@ -360,12 +375,12 @@ def change_username():
 def change_password():
 
     if not curAdmin.getLoggedIn():
-        return redirect(url_for('home_page'))
+        return redirect(url_for('home'))
 
     if request.method == 'POST':    
-        userName = request.form.get('user-name')
-        password = request.form.get('user-password')
-        newPassword = request.form.get('user-newPassword')
+        username = request.form.get('user-name').strip()
+        password = request.form.get('user-password').strip()
+        newPassword = request.form.get('user-newPassword').strip()
 
         if len(newPassword) < 6:
             flash('Password must be at least 6 characters long', category='error')
@@ -378,15 +393,18 @@ def change_password():
         elif newPassword == password:
             flash('Password can not be the same', category='error')
         else:
-            valid = curAdmin.changePassword(username,password, newPassword)
-            if valid:
-                flash('Password changed successfully', category='success')
-                return render_template('change_password.html'), {"Refresh": "3; url=/home"}
+            valid = curAdmin.changePassword(username,password,newPassword)
+            if valid == 0:
+                flash('Password changed successfully. Returning to dashboard in 3 seconds...', category='success')
+                return render_template('change_password.html'), {"Refresh": "3; url=/admin_home"}
+            elif valid == 1:
+                flash('Incorrect Password', category='error')
+            elif valid == 2:
+                flash('Username not found', category='error')
             else:
                 flash('Unable to change password', category='error')
     
     return render_template('change_password.html')
-
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=random.randint(2000, 9000), debug=True)
