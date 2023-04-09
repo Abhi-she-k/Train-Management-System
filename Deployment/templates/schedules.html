@@ -9,10 +9,12 @@
   <title>Track Master | Schedules</title>
   <link rel="shortcut icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
   <link rel="apple-touch-icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
-  <link href="{{ url_for('static',filename='styles/maps-styles.css') }}" rel="stylesheet" type="text/css" />
+  <link href="{{ url_for('static',filename='styles/schedules-styles.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+  <div><button onclick="goBack()">Go Back</button></div>
+
   {% for transit_type, transit_info in info.items() %}
     <h1>{{ transit_type }}</h1>
     {% for line_name, stations in transit_info.items() %}
@@ -30,7 +32,14 @@
         {% endfor %}
       </table>
     {% endfor %}
-  {% endfor %}    
+  {% endfor %}
+  
+  <script>
+    function goBack() {
+        window.history.back();
+    }
+  </script>
+
 </body>
 
 </html>

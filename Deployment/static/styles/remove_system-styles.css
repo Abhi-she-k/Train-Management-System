@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-:root {
-  --color-default: #13818D;
-  --color-second: red;
-  --color-white: #fff;
-  --color-body: #e4e9f7;
-  --color-light: #e0e0e0;
-}
-
 * {
   padding: 0%;
   margin: 0%;
@@ -17,18 +9,19 @@
 
 body {
   min-height: 100vh;
+  background-color: #E4E9F7;
 }
 
 .sidenavbar {
-  min-height: 100vh;
-  width: 78px;
-  padding: 6px 14px;
-  z-index: 99;
-  background-color: var(--color-default);
-  transition: all .5s ease;
   position: fixed;
   top: 0;
   left: 0;
+  min-height: 100vh;
+  width: 78px;
+  padding: 6px 14px;
+  z-index: 10;
+  background-color: #13818D;
+  transition: all .5s ease;
 }
 
 .sidenavbar.open {
@@ -36,31 +29,25 @@ body {
 }
 
 .sidenavbar .logo_details {
-  height: 60px;
   display: flex;
   align-items: center;
   position: relative;
-}
-
-.sidenavbar .logo_details .icon {
-  opacity: 0;
-  transition: all 0.5s ease;
+  height: 60px;
 }
 
 .sidenavbar .logo_details .logo_name {
-  color: var(--color-white);
+  color: white;
   font-size: 22px;
   font-weight: 600;
   opacity: 0;
   transition: all .5s ease;
 }
 
-.sidenavbar.open .logo_details .icon,
 .sidenavbar.open .logo_details .logo_name {
   opacity: 1;
 }
 
-.sidenavbar .logo_details #btn {
+.sidenavbar .logo_details #navBtn {
   position: absolute;
   top: 50%;
   right: 0;
@@ -71,17 +58,17 @@ body {
   transition: all .5s ease;
 }
 
-.sidenavbar.open .logo_details #btn {
+.sidenavbar.open .logo_details #navBtn {
   text-align: right;
 }
 
 .sidenavbar i {
-  color: var(--color-white);
+  text-align: center;
+  color: white;
   height: 60px;
   line-height: 60px;
   min-width: 50px;
   font-size: 25px;
-  text-align: center;
 }
 
 .sidenavbar .nav-list {
@@ -95,12 +82,12 @@ body {
   list-style: none;
 }
 
-.sidenavbar li .infotool {
+.sidenavbar li .tooltiptext {
   position: absolute;
   top: -20px;
   left: calc(100% + 40px);
   z-index: 3;
-  background-color: var(--color-white);
+  background-color: white;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   padding: 6px 14px;
   font-size: 15px;
@@ -111,7 +98,7 @@ body {
   pointer-events: none;
 }
 
-.sidenavbar li:hover .infotool {
+.sidenavbar li:hover .tooltiptext {
   opacity: 1;
   pointer-events: auto;
   transition: all 0.4s ease;
@@ -119,32 +106,9 @@ body {
   transform: translateY(-50%);
 }
 
-.sidenavbar.open li .infotool {
+.sidenavbar.open li .tooltiptext {
   display: none;
 }
-
-.sidenavbar input {
-  font-size: 15px;
-  color: var(--color-white);
-  font-weight: 400;
-  outline: none;
-  height: 35px;
-  width: 35px;
-  border: none;
-  border-radius: 5px;
-  background-color: var(--color-second);
-  transition: all .5s ease;
-}
-
-.sidenavbar input::placeholder {
-  color: var(--color-light)
-}
-
-.sidenavbar.open input {
-  width: 100%;
-  padding: 0 20px 0 50px;
-}
-
 
 .sidenavbar li a {
   display: flex;
@@ -152,16 +116,13 @@ body {
   width: 100%;
   align-items: center;
   text-decoration: none;
-  background-color: var(--color-default);
+  background-color: #13818D;
   position: relative;
   transition: all .5s ease;
-  z-index: 12;
+  z-index: 5;
 }
 
-.icon-div {
-  transition: background-color 0.2s;
-}
-.icon-div :hover{
+.icon-div :hover {
   background-color: white;
 }
 
@@ -171,7 +132,6 @@ body {
   width: 100%;
   height: 100%;
   transform: scaleX(0);
-  /* background-color: var(--color-white); */
   background-color: white;
   border-radius: 5px;
   z-index: -2;
@@ -181,11 +141,11 @@ body {
 
 .sidenavbar li a:hover::after {
   transform: scaleX(1);
-  color: var(--color-default)
+  color: #13818D;
 }
 
-.sidenavbar li a .link_name {
-  color: var(--color-white);
+.sidenavbar li a .icon_name {
+  color: white;
   font-size: 15px;
   font-weight: 400;
   white-space: nowrap;
@@ -195,13 +155,13 @@ body {
   opacity: 0;
 }
 
-.sidenavbar li a:hover .link_name,
+.sidenavbar li a:hover .icon_name,
 .sidenavbar li a:hover i {
   transition: all 0.5s ease;
-  color: var(--color-default)
+  color: #13818D;
 }
 
-.sidenavbar.open li a .link_name {
+.sidenavbar.open li a .icon_name {
   opacity: 1;
   pointer-events: auto;
 }
@@ -213,69 +173,10 @@ body {
   border-radius: 5px;
 }
 
-.sidenavbar li.profile {
-  position: fixed;
-  height: 60px;
-  width: 78px;
-  left: 0;
-  bottom: -8px;
-  padding: 10px 14px;
-  overflow: hidden;
-  transition: all .5s ease;
-}
-
-.sidenavbar.open li.profile {
-  width: 250px;
-}
-
-.sidenavbar .profile .profile_details {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-
-.sidenavbar li img {
-  height: 45px;
-  width: 45px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.sidenavbar li.profile .name,
-.sidenavbar li.profile .designation {
-  font-size: 15px;
-  font-weight: 400;
-  color: var(--color-white);
-  white-space: nowrap;
-}
-
-.sidenavbar li.profile .designation {
-  font-size: 12px;
-}
-
-.sidenavbar .profile #log_out {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  background-color: var(--color-second);
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.5s ease;
-}
-
-.sidenavbar.open .profile #log_out {
-  width: 50px;
-  background: none;
-}
-
 .home-section {
   position: relative;
-  background-color: var(--color-body);
+  background-color: #E4E9F7;
+  text-align: center;
   min-height: 100vh;
   top: 0;
   left: 78px;
@@ -289,30 +190,60 @@ body {
   width: calc(100% - 250px);
 }
 
-.home-section .text {
+.home-section {
+  text-align: center;
+}
+
+#message {
+  text-align: left;
+}
+
+.home-section .title {
   display: inline-block;
-  color: var(--color-default);
+  color: #13818D;
   font-size: 50px;
   font-weight: 500;
   margin: 18px;
 }
 
-.home-section .form-container {
-  margin: 18px;
+.container {
+  background: white;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0px 15px 25px;
 }
 
-.sidenavbar .nav-list{
-  /* background-color: blue; */
+#remove-button {
+  background-color: #13818D;
+  color: white;
+  border-radius: 5px;
+  height: 35px;
+  width: 86%;
+  border-color: #13818D;
+  margin-bottom: 10px;
+}
+
+.info-box {
+  margin: 20px;
+  text-align: left;
+}
+
+.info-box input {
+  width: 100%;
+  height: 40px;
+}
+
+.info-box label {
+  margin: 10px 0px 10px 0px;
+}
+
+.sidenavbar .nav-list {
   transform: translateX(-34px);
   width: 120%;
 }
 
-.sidenavbar .nav-list .nav-item{
-  transform: translateX(100px);
-}
-
 .logout {
-  margin-top: 320px;
+  margin-top: 365px;
   width: 100%;
   border-radius: 5%;
   background-color: red;

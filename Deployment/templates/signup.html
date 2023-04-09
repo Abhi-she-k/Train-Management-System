@@ -28,7 +28,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
       {% else %}
-      <div class="alert alert-success alter-dismissable fade show" role="alert">
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{ message }}
         <button type="button" class="close" data-dismiss="alert" aria-label="close">
           <span aria-hidden="true">&times;</span>
@@ -43,14 +43,13 @@
 
   <div class="container">
     <div id="title"><h1 id="form-title">Sign Up</h1></div>
-
     <form name="user-info" id="form-box" method="POST">
-      <div class="info-box" id="info1">
+      <div class="info-box">
         <label for="user-info">Username:</label><br>
-        <input id="name" type="text" name="user-name" placeholder="John Doe"><br>
+        <input type="text" name="user-name" placeholder="John Doe" required><br>
       </div>
 
-      <div class="info-box" id="info2">
+      <div class="info-box">
         <label for="user-info">Password:
           <i class="fa-solid fa-circle-info" id="tooltip">
             <span class="tooltiptext"> Password Requirements:
@@ -63,17 +62,17 @@
             </span>
           </i>
         </label><br>
-        <input id="password" type="password" name="user-password1" placeholder="******"><br>
+        <input type="password" name="user-password1" placeholder="******" required><br>
       </div>
 
-      <div class="info-box" id="info3">
+      <div class="info-box">
         <label for="user-info">Re-type Password:</label><br>
-        <input id="password" type="password" name="user-password2" placeholder="******"><br>
+        <input type="password" name="user-password2" placeholder="******" required><br>
       </div>
 
-      <div class="info-box" id="info4">
+      <div class="info-box">
         <label for="user-info">Admin Key:</label><br>
-        <input id="key" type="password" name="user-key" placeholder="******"><br>
+        <input type="password" name="user-key" placeholder="******" required><br>
       </div>
 
       <input id="signup-button" type="submit" value="Sign Up">

@@ -9,128 +9,129 @@
   <title>Track Master | Admin Homepage</title>
   <link rel="shortcut icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
   <link rel="apple-touch-icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
-  <link href="{{ url_for('static',filename='styles/admin_home-styles.css') }}" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+    crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="{{ url_for('static',filename='styles/admin_home-styles.css') }}" rel="stylesheet" type="text/css" />
 
 </head>
 
 <body>
-  <div class="sidebar">
+  <div class="sidenavbar">
     <div class="logo_details">
       <div class="logo_name">Track Master</div>
-      <i class="fa-solid fa-bars" id="btn"></i>
+      <i class="fa-solid fa-bars" id="navBtn"></i>
     </div>
     <ul class="nav-list">
       <li>
         <a href="/admin_home">
-          <i class="fas fa-home"></i>
-          <span class="link_name">Home</span>
+          <div class="icon-div"><i class="fas fa-home"></i></div>
+          <span class="icon_name">Home</span>
         </a>
-        <span class="tooltip">Home</span>
+        <span class="tooltiptext">Home</span>
       </li>
       <li>
         <a href="/create_system">
-          <i class="fa fa-calendar"></i>
-          <span class="link_name">Create System</span>
+          <div class="icon-div"><i class="fa fa-calendar"></i></div>
+          <span class="icon_name">Create System</span>
         </a>
-        <span class="tooltip">Create System</span>
+        <span class="tooltiptext">Create System</span>
       </li>
       <li>
         <a href="remove_system">
-          <i class="fa fa-calendar-xmark"></i>
-          <span class="link_name">Remove System</span>
+          <div class="icon-div"><i class="fa fa-calendar-xmark"></i></div>
+          <span class="icon_name">Remove System</span>
         </a>
-        <span class="tooltip">Remove System</span>
+        <span class="tooltiptext">Remove System</span>
       </li>
       <li>
         <a href="create_schedule">
-          <i class="fa fa-calendar-plus"></i>
-          <span class="link_name">Create Schedule</span>
+          <div class="icon-div"><i class="fa fa-calendar-plus"></i></div>
+          <span class="icon_name">Create Schedule</span>
         </a>
-        <span class="tooltip">Create Schedule</span>
+        <span class="tooltiptext">Create Schedule</span>
       </li>
       <li>
         <a href="remove_from_schedule">
-          <i class="fa fa-calendar-week"></i>
-          <span class="link_name">Remove from Schedule</span>
+          <div class="icon-div"><i class="fa fa-calendar-week"></i></div>
+          <span class="icon_name">Remove from Schedule</span>
         </a>
-        <span class="tooltip">Remove from Schedule</span>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa-solid fa-user"></i>
-          <span class="link_name">User Account</span>
-        </a>
-        <span class="tooltip">User Account</span>
-      </li>
-      <li class="profile">
-        <i class="fa fa-sign-out" id="log_out"></i>
+        <span class="tooltiptext">Remove from Schedule</span>
       </li>
     </ul>
+    <div class="logout">
+      <a href="logout"><i class="fa fa-sign-out" ></i></a>
+    </div>
   </div>
-  <section class="home-section">
-    <div class="text">Dashboard</div>
 
+  <section class="home-section">
+    
+    <div class="title">Dashboard</div>
+    
     <div id="greeting"><h1>Welcome {{ user }} </h1></div>
 
-    <div id="account-info">
-      <div>There are currently {{ systems }} systems active</div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-6" >
+          <div id="admin_info">
+            
+            <div class="row"><div><h4>Account Type:</h4>Admin</div></div>
 
-      <div>Account Type: Admin</div>
+            <div class="row">
+              <div><h4 class="btn_label">Username:</h4></div>
+              <form id="change_user" action="/admin_home" method="POST">
+                <div><label>{{ user }}</label></div>
+                <input type="submit" name="submit_button" value="Change Username">
+              </form>
+            </div>
+            <div class="row">
+              <div><h4 class="btn_label">Password:</h4></div>
+              <form action="/admin_home" method="POST">
+                <div><label>{{ password }}</label></div>
+                <input type="submit" name="submit_button" value="Change Password">
+              </form>
+            </div>
+          </div>
+        </div>
 
-      <div>Username</div>
-      <div>{{ user }}</div>
-      <form action="/admin_home" method="POST">
-        <input type="submit" name="submit_button" value="Change Username">
-      </form>
+        <div class="col-lg-6" id="schedules">
+          <div id="systems"><h5>There are currently {{ systems }} systems active</h5></div>
 
-      <div>Password</div>
-      <div>{{ password }}</div>
-      <form action="/admin_home" method="POST">
-        <input type="submit" name="submit_button" value="Change Password">
-      </form>
+          {% for transit_type, transit_info in info.items() %}
+            <ul>
+              <li><h4>{{ transit_type }}</h4></li>
+            </ul>
+          {% endfor %}
+          <div id="view_btn">
+            <form action="/admin_home" method="POST">
+            <input type="submit" name="submit_button" value="View Schedules">
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
     
-    <div id="schedules">
-      {% for transit_type, transit_info in info.items() %}
-        <h1>{{ transit_type }}</h1>
-        {% for line_name, stations in transit_info.items() %}
-          <h2>{{ line_name }}</h2>
-          <table>
-            <tr>
-              <th>Station</th>
-              <th>Time</th>
-            </tr>
-            {% for station_name, time in stations.items() %}
-              <tr>
-                <td>{{ station_name }}</td>
-                <td>{{ time }}</td>
-              </tr>
-            {% endfor %}
-          </table>
-        {% endfor %}
-      {% endfor %}
-    </div>
+    <!-- <div class="container">
+      
+    </div> -->
+
   </section>
 
   <script>
     window.onload = function () {
-      const sidebar = document.querySelector(".sidebar");
-      const closeBtn = document.querySelector("#btn");
-      const searchBtn = document.querySelector(".bx-search")
+      const sidenavbar = document.querySelector(".sidenavbar");
+      const closeBtn = document.querySelector("#navBtn");
 
       closeBtn.addEventListener("click", function () {
-        sidebar.classList.toggle("open")
-        menuBtnChange()
-      })
-
-      searchBtn.addEventListener("click", function () {
-        sidebar.classList.toggle("open")
+        sidenavbar.classList.toggle("open")
         menuBtnChange()
       })
 
       function menuBtnChange() {
-        if (sidebar.classList.contains("open")) {
+        if (sidenavbar.classList.contains("open")) {
           closeBtn.classList.replace("bx-menu", "bx-menu-alt-right")
         } else {
           closeBtn.classList.replace("bx-menu-alt-right", "bx-menu")
