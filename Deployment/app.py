@@ -233,6 +233,7 @@ def remove_system():
             
         if not sysExists:
             flash('System not found', category='error')
+            render_template('remove_system.html')
 
     return render_template('remove_system.html')
 
@@ -258,27 +259,38 @@ def create_schedule():
         # Checking to see if the system is valid
         if(valid_sys == False):
             flash('Not a valid system', category='error')
+            return render_template('create_schedule.html')
         # Checking to see if the departTime is valid
         else:
             if not datetime.strptime(departTime, '%H:%M'):
                 flash('Invalid departure time. Time must in in format 09:45', category='error')
+                return render_template('create_schedule.html')
             #Checking to see if stations input is valid
             stats = stations.strip().split('\r\n')
             final_stats = [string.strip() for string in stats if string.strip()]
             if not all(isinstance(elem, str) for elem in final_stats):
                 flash('Invalid Station Input. Stations can only contain strings', category='error')
+                return render_template('create_schedule.html')
             if not all(len(elem) <= 20 for elem in final_stats):
                 flash('Invalid Station Input.', category='error')
+                return render_template('create_schedule.html')
             #Checking to see if time between stations input is valid
             times = timeBetweenStat.strip().split('\r\n')
             final_times = [string.strip() for string in times if string.strip()]
             if not all(elem.isdigit() for elem in final_times):
                 flash('Invalid Time Input', category='error')
+                return render_template('create_schedule.html')
             if not all(len(elem) < 3 for elem in final_times):
                 flash('Invalid Time Input.', category='error')
+                return render_template('create_schedule.html')
             #Checking to see if user input the correct number of station and times
+            if(len(final_times) >= (len(final_stats)) ):
+                flash('Too many times', category='error')
+                return render_template('create_schedule.html')
             if(len(final_times) != (len(final_stats) - 1) ):
                 flash('Times do not match', category='error')
+                return render_template('create_schedule.html')
+
             
             timeBet = [int(elem) for elem in final_times]
 
@@ -286,9 +298,11 @@ def create_schedule():
             for i in range(len(final_stats)):
                 newRoute.addStation(station(i, final_stats[i]))  
             newTrain = train(trainName, newRoute, timeBet, departTime)
-            sys.addTrains(newTrain)
-            sys.viewTrainSchedule()
-            flash('Train added successfully', category='success')    
+            if(sys.addTrains(newTrain)==True):
+                sys.viewTrainSchedule()
+                flash('Train added successfully', category='success')    
+            else:
+                flash('Time conflicts', category='error') 
 
     return render_template('create_schedule.html')
 
@@ -314,6 +328,7 @@ def remove_from_schedule():
 
         if not trainExists:
             flash('Train not found', category='error')
+            return render_template('remove_from_schedule.html')
         else:
             sys.removeTrain(t)
 

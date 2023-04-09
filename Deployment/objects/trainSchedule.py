@@ -1,14 +1,14 @@
 from datetime import datetime, timedelta
 import json
 
-path  = '/Users/abhishekpaul/Desktop/CPS406/Train-Management-System/Deployment/objects/trainSchedule.json'
+path  = 'C:/Users/abhis/Desktop/cps406/Train-Management-System/Deployment/objects/trainSchedule.json'
 class trainSchedule():
     def __init__(self, scheduleId) -> None:
         self.scheduleId = scheduleId
         self.trains = []
 
     def addTrains(self, train):
-      if(self.checkConflicts(train)):
+      if(self.checkConflicts(train) == True):
         with open(path, 'r') as f:
           data = json.load(f)
 
@@ -27,6 +27,9 @@ class trainSchedule():
         with open(path, 'w') as f:
           json.dump(data, f, indent=4)
           self.trains.append(train)
+          return True
+      else:
+         return False
 
 
     def removeTrain(self, train):
