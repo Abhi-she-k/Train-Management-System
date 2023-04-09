@@ -42,7 +42,7 @@ flask run
 
 To run the tests:
 
-Change:
+Change this code snippets in admin.py: 
 
 ```
 from objects.user import user
