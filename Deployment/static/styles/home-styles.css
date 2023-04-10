@@ -8,6 +8,11 @@
   font-family: 'Poppins', sans-serif;
 }
 
+
+body {
+  background-color: #E4E9F7;
+}
+
 #main.title {
   background-color: black;
 }
@@ -17,10 +22,6 @@
   text-align: center;
   vertical-align: middle;
   padding: 100px;
-}
-
-body {
-  background-color: #E4E9F7;
 }
 
 .inner_main_menu {
@@ -53,7 +54,6 @@ body {
 
 .inner_main_menu ul li:nth-child(3) {
   padding-right: 0px;
-
 }
 
 .inner_main_menu ul li:nth-child(4),
@@ -64,11 +64,6 @@ body {
   padding-top: 10px;
 
 }
-
-/* .inner_main_menu ul li:nth-child(5) {
-  padding-right: -30px;
-} */
-
 
 .inner_main_menu ul li a {
   color: white;
@@ -176,11 +171,6 @@ body {
   text-align: center;
 }
 
-/* #nav-back {
-  height: 100px;
-
-} */
-
 #welcome {
   position: fixed;
   margin: 10% 0 0 16%;
@@ -188,8 +178,6 @@ body {
   color: black;
   background-color: black;
   padding: 0 1% 0 1%;
-  /* padding-left: 1%;
-  padding-right: 1%; */
 
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
   border-radius: 5px;
@@ -223,7 +211,6 @@ body {
 
 #login a {
   text-decoration: underline;
-
 }
 
 #footer {

@@ -145,8 +145,10 @@ def route1():
         for i in stations:
             for j in i:
                 info[j.getName()] = j.getSchedules()
-        #return render_template('find_route.html', info=info)
-    
+
+        if len(info) == 0:
+            flash('No routes were found', category='secondary')
+
     return render_template('find_route.html', info=info)
 
 @app.route('/schedules')
@@ -183,8 +185,9 @@ def eta():
 
                 times.append([j.getName(), j.getSchedules(), estTime, startStation, endStation, startTime, endTime])
         
-        #return render_template('eta.html', times=times)
-
+        if len(times) == 0:
+            flash('No stations were found', category='secondary')
+    
     return render_template('eta.html', times=times)
 
 @app.route('/create_system', methods=['GET', 'POST'])

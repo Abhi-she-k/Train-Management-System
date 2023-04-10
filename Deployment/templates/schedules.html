@@ -9,31 +9,45 @@
   <title>Track Master | Schedules</title>
   <link rel="shortcut icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
   <link rel="apple-touch-icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="{{ url_for('static',filename='styles/schedules-styles.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  <div><button onclick="goBack()">Go Back</button></div>
-
-  {% for transit_type, transit_info in info.items() %}
-    <h1>{{ transit_type }}</h1>
-    {% for line_name, stations in transit_info.items() %}
-      <h2>{{ line_name }}</h2>
-      <table>
-        <tr>
-          <th>Station</th>
-          <th>Time</th>
-        </tr>
-        {% for station_name, time in stations.items() %}
-          <tr>
-            <td>{{ station_name }}</td>
-            <td>{{ time }}</td>
-          </tr>
+  <div class="container" id="box">
+    <div id="back-btn"><button onclick="goBack()"><i class="fa-solid fa-arrow-left" style="color: white;"></i></button></div>
+    <div class="row" id="schedule-table">
+      <div class="col-lg-6 mx-auto" id="schedules-info">
+        {% for transit_type, transit_info in info.items() %}
+          <div class="transit-type">
+            <h1>{{ transit_type }}</h1>
+            {% for line_name, stations in transit_info.items() %}
+              <div class="line-name">
+                <h2>{{ line_name }}</h2>
+                <table>
+                  <tr>
+                    <th>Station</th>
+                    <th>Time</th>
+                  </tr>
+                  {% for station_name, time in stations.items() %}
+                    <tr>
+                      <td>{{ station_name }}</td>
+                      <td>{{ time }}</td>
+                    </tr>
+                  {% endfor %}
+                </table>
+              </div>
+            {% endfor %}
+          </div>
         {% endfor %}
-      </table>
-    {% endfor %}
-  {% endfor %}
-  
+      </div>
+    </div>
+  </div>
+
   <script>
     function goBack() {
         window.history.back();

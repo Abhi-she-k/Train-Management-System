@@ -9,8 +9,7 @@
 }
 
 body {
-    background-color: #e4e9f7;
-
+    background-color: #E4E9F7;
 }
 
 .inner_main_menu {
@@ -45,11 +44,10 @@ body {
 }
 
 .inner_main_menu ul li:nth-child(4),
-.inner_main_menu ul li:nth-child(5),
-.inner_main_menu ul li:nth-child(6) {
+.inner_main_menu ul li:nth-child(5) {
     background-color: none;
     padding-left: 0px;
-    padding-right: 30px;
+    padding-right: 70px;
     padding-top: 10px;
 }
 
@@ -103,6 +101,26 @@ body {
 
 .inner_main_menu ul li ul li a:hover {
     color: #13818D;
+}
+
+#login {
+    position: fixed;
+    z-index: 2;
+    color: black;
+    margin-left: 82%;
+}
+
+#login a {
+    text-decoration: underline;
+}
+
+#text {
+    position: absolute;
+    margin: 12% 0 0 30%;
+    z-index: 2;
+    color: black;
+    background-color: white;
+    padding: 0 1% 0 1%;
 }
 
 .logo_area {

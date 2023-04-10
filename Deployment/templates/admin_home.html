@@ -88,9 +88,13 @@
               </form>
             </div>
             <div class="row">
-              <div><h4 class="btn_label">Password:</h4></div>
+              <div>
+                <h4 class="btn_label">Password:
+                  <i class="fa-solid fa-eye" id="toggle_password" style="cursor: pointer;"></i>
+                </h4>
+              </div>
               <form action="/admin_home" method="POST">
-                <div><label>{{ password }}</label></div>
+                <div><label id="password_label" style="-webkit-text-security: disc;">{{ password }}</label></div>
                 <input type="submit" name="submit_button" value="Change Password">
               </form>
             </div>
@@ -137,6 +141,17 @@
           closeBtn.classList.replace("bx-menu-alt-right", "bx-menu")
         }
       }
+
+      const togglePasswordBtn = document.getElementById('toggle_password');
+      const passwordLabel = document.getElementById('password_label');
+
+      togglePasswordBtn.addEventListener('click', () => {
+        if (passwordLabel.style.webkitTextSecurity === 'none') {
+          passwordLabel.style.webkitTextSecurity = 'disc';
+        } else {
+          passwordLabel.style.webkitTextSecurity = 'none';
+        }
+      });
     }
   </script>
 

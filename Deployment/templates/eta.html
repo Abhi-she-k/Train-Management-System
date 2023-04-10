@@ -9,71 +9,84 @@
   <title>Track Master | ETA</title>
   <link rel="shortcut icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
   <link rel="apple-touch-icon" href="{{ url_for('static',filename='images/favicon.ico') }}" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="{{ url_for('static',filename='styles/eta-styles.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-
-  <div>
+  <div id="message">
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
         {% for category, message in messages %}
         {% if category == 'error' %}
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Error: </strong> {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error: </strong> {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% elif category == 'secondary' %}
+          <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
         {% else %}
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
         {% endif %}
         {% endfor %}
     {% endif %}
     {% endwith %}
   </div>
+
   
-  <div class="form-container">
-    <h1 id="form-title">Calculate ETA</h1>
+  <div class="container-fluid" id="box">
+    <div id="home-button"><a href="/"><i class="fa fa-home"></i></a></div>
 
-    <form name="user-info" id="form-box" method="POST">
-      <div class="info-box" id="info1">
-        <label for="user-info">Starting Station:</label><br>
-        <input id="name" type="text" name="start-station" placeholder="Danforth"><br>
+    <div class="row">
+      <div class="col-lg-6" id="eta_form">
+        
+        <h1 id="form-title">Calculate ETA</h1>
+
+        <form name="user-info" id="form-box" method="POST">
+          <div class="info-box">
+            <label for="user-info">Starting Station:</label><br>
+            <input id="name" type="text" name="start-station" placeholder="Danforth"><br>
+          </div>
+
+          <div class="info-box">
+            <label for="user-info">Ending Station:</label><br>
+            <input id="password" type="text" name="end-station" placeholder="Union"><br>
+          </div>
+
+          <input id="search-button" type="submit" value="Search">
+        </form>
       </div>
-
-      <div class="info-box" id="info2">
-        <label for="user-info">Ending Station:</label><br>
-        <input id="password" type="text" name="end-station" placeholder="Union"><br>
+      
+      <div class="col-lg-6" id="eta_info">
+        <h1>ETA</h1>
+        {% for time in times %}
+          <div class="time-box">
+            <h2>{{ time[0] }}</h2>
+            <div class="station-info">
+              <div>
+                <p>Start: {{ time[3] }}</p>
+                <p>End: {{ time[4] }}</p>
+              </div>
+              <div class="time-info">
+                <p>Time: {{ time[5] }} - {{ time[6] }}</p>
+                <p>Trip Time: {{ time[2] }} mins</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
       </div>
-
-      <input id="login-button" type="submit" value="Search">
-    </form>
+    </div>
   </div>
-
-  {% for time in times %}
-    <h2>{{ time[0] }}</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Schedule</th>
-                <th>Value</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for key, value in time[1].items() %}
-                <tr>
-                    <td>{{ key }}</td>
-                    <td>{{ value }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <p>{{ time[3] }} to {{ time[4] }} takes {{ time[2] }} mins, {{ time[5] }} - {{ time[6] }}</p>
-  {% endfor %}
-
-
 
 </body>
 

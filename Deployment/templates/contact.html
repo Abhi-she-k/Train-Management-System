@@ -89,6 +89,10 @@
     <h1 class=""></h1>
   </div>
 
+  <div id="text">
+    <h1>Meet the Developers of Track Master</h1>
+  </div>
+
   <footer>
     <div id="footer">
       <div id="socials">
@@ -111,6 +115,9 @@
     </div>
   </footer>
 
+  <div id="login">
+    <a href="/login">Login</a>
+  </div>
 
   <div id="main_menu">
     <div id="nav-back">
@@ -118,20 +125,13 @@
         <a><img id="homepage-logo" src="{{ url_for('static',filename='images/train_logo.png') }}" alt=""></a>
       </div>
 
-      <div id="test" class="inner_main_menu">
+      <div class="inner_main_menu">
         <ul id="menu">
           <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a style="pointer-events: none; cursor: default;" href="">Trains</a>
-            <ul>
-              <li><a href="/find_route">Trip Planner</a></li>
-              <li><a href="/eta">ETA</a></li>
-              <li><a href="/eta">Schedules</a></li>
-            </ul>
-          </li>
           <li><a href="/contact">Contact</a></li>
+          <li><a href="/eta">ETA</a></li>
+          <li><a href="/find_route">Trip Planner</a></li>
           <li><a href="/schedules">Schedules</a></li>
-          <li><a href="/faq">FAQ</a></li>
         </ul>
       </div>
     </div>
