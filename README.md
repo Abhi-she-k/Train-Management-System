@@ -19,12 +19,19 @@ A step by step series of examples that tell you how to get a development env run
 2. Open terminal and move into the Train-Management-System directory
 3. Change file path for json in the admin.py file in objects to the path of adminInfo.json for the relative system
 4. Change file path for json in the trainSchedule.py file in objects to the path of trainSchedule.json for the relative system
-4. Install Flask
+5. Set FLASK_APP variable in through terminal with command
+
+```
+FLASK_APP=/Backend/Deployment/app.py
+```
+
+6. Install Flask
 
 ```
 pip install Flask
 ```
-5. run flask server
+
+7. run flask server
 
 ```
 python -m flask run
@@ -62,10 +69,6 @@ To:
 
 Run the test.py file 
 
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
