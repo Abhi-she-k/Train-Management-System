@@ -7,9 +7,11 @@ The Traffic Management System (TMS) was designed to help monitor, track, and con
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+
 ### Prerequisites
 
 Python Installed on System
+
 
 ### Installing
 
@@ -19,16 +21,16 @@ A step by step series of examples that tell you how to get a development env run
 2. Open terminal and move into the Train-Management-System directory
 3. Change file path for json in the admin.py file in objects to the path of adminInfo.json for the relative system
 4. Change file path for json in the trainSchedule.py file in objects to the path of trainSchedule.json for the relative system
-5. Set FLASK_APP variable in through terminal with command
-
-```
-FLASK_APP=/Backend/Deployment/app.py
-```
-
-6. Install Flask
+5. Install Flask
 
 ```
 pip install Flask
+```
+
+6. Set FLASK_APP variable in through terminal with command
+
+```
+FLASK_APP=/Backend/Deployment/app.py
 ```
 
 7. run flask server
@@ -42,7 +44,6 @@ or
 ```
 flask run
 ```
-
 
 
 ## Running the tests
@@ -76,7 +77,6 @@ Run the test.py file
 * [Python](https://www.python.org/doc/) - Backend
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) - Developement of Frontend
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) - Styling Frontend
-
 
 
 ## Authors
