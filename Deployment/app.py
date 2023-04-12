@@ -45,9 +45,9 @@ def createObjects():
 
 createObjects()
 
-# @app.route('/<invalid_url>')
-# def invalid_url(invalid_url):
-#     return redirect(url_for('home'))
+@app.route('/<invalid_url>')
+def invalid_url(invalid_url):
+    return redirect(url_for('home'))
     
 @app.route('/')
 def home():
@@ -76,7 +76,6 @@ def login():
                     stations[j.getName()] = j.getSchedules()
                 info[i.getScheduleId()] = stations
 
-            #return render_template('admin_home.html')
             return render_template('admin_home.html', user=username, password=password, systems=numSystems, info=info)
         else:
             flash('Invalid Information', category='error')
@@ -131,8 +130,8 @@ def faq():
 
 @app.route('/find_route', methods=['GET', 'POST'])
 def route1():
+    
     info = {}
-
     if request.method == 'POST':
         startStation = request.form.get('start-station').strip()
         endStation = request.form.get('end-station').strip()
@@ -155,7 +154,6 @@ def route1():
 def schedules():
 
     info = {}
-    
     for i in systemObjects:
         stations = {}
         for j in i.getTrains():
@@ -342,8 +340,6 @@ def admin_home():
     if not curAdmin.getLoggedIn():
         return redirect(url_for('home'))
 
-    # info = {}
-    # username = ""
     if request.method == 'POST':
         if request.form['submit_button'] == 'Change Username':
             return redirect(url_for('change_username'))
